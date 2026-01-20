@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Save, Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Save, Globe, Mail, MapPin, Phone, Check } from "lucide-react";
 
 export default function SettingsPage() {
+    const [saveSuccess, setSaveSuccess] = useState(false);
     const [settings, setSettings] = useState({
         siteName: "Henry Harrison",
         siteUrl: "https://henryharrison.com",
@@ -49,7 +50,8 @@ export default function SettingsPage() {
     const handleSave = () => {
         // In production, save to database
         console.log("Saving settings:", settings);
-        alert("Settings saved successfully!");
+        setSaveSuccess(true);
+        setTimeout(() => setSaveSuccess(false), 3000);
     };
 
     return (
@@ -59,13 +61,21 @@ export default function SettingsPage() {
                     <h1 className="text-2xl font-semibold text-gray-900">Settings</h1>
                     <p className="text-gray-500 mt-1">Manage your website settings and configurations.</p>
                 </div>
-                <button
-                    onClick={handleSave}
-                    className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                    <Save className="w-4 h-4" />
-                    Save Changes
-                </button>
+                <div className="flex items-center gap-3">
+                    {saveSuccess && (
+                        <span className="flex items-center gap-2 text-green-600 text-sm">
+                            <Check className="w-4 h-4" />
+                            Settings saved successfully!
+                        </span>
+                    )}
+                    <button
+                        onClick={handleSave}
+                        className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                    >
+                        <Save className="w-4 h-4" />
+                        Save Changes
+                    </button>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -1,22 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Sparkles, Wand2, RefreshCw, Save, Edit, Loader2 } from "lucide-react";
-import { categories } from "@/data/articles";
-import { generateArticleFromTopic, createArticle } from "@/lib/actions";
+import { generateArticleFromTopic, createArticle, getCategories } from "@/lib/actions";
+
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+}
 
 export default function GenerateArticlePage() {
     const router = useRouter();
     const [topic, setTopic] = useState("");
     const [category, setCategory] = useState("Texas News");
+    const [categories, setCategories] = useState<Category[]>([]);
     const [isGenerating, setIsGenerating] = useState(false);
     const [generatedArticle, setGeneratedArticle] = useState<{
         title: string;
         excerpt: string;
         content: string;
     } | null>(null);
+
+    useEffect(() => {
+        async function loadCategories() {
+            const cats = await getCategories();
+            setCategories(cats);
+            if (cats.length > 0) {
+                setCategory(cats[0].name);
+            }
+        }
+        loadCategories();
+    }, []);
 
     const suggestedTopics = [
         "Dallas real estate market trends 2024",

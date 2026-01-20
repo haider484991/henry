@@ -372,6 +372,43 @@ export async function getCategories() {
     return data;
 }
 
+export async function getCategoryBySlug(slug: string) {
+    const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .eq('slug', slug)
+        .single();
+
+    if (error) {
+        console.error('Error fetching category:', error);
+        return null;
+    }
+
+    return data;
+}
+
+export async function getArticlesByCategory(categorySlug: string) {
+    // First get the category to get its name
+    const category = await getCategoryBySlug(categorySlug);
+    if (!category) {
+        return [];
+    }
+
+    const { data, error } = await supabase
+        .from('articles')
+        .select('*')
+        .eq('category', category.name)
+        .eq('published', true)
+        .order('date', { ascending: false });
+
+    if (error) {
+        console.error('Error fetching articles by category:', error);
+        return [];
+    }
+
+    return data.map(dbArticleToArticle);
+}
+
 // Season Actions
 export async function getSeasons() {
     const { data, error } = await supabase
