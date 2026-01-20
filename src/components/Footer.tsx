@@ -1,64 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowUpRight, Linkedin, Twitter, Youtube } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function Footer() {
-    const footerRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Animate footer columns
-            gsap.from(".footer-col", {
-                scrollTrigger: {
-                    trigger: footerRef.current,
-                    start: "top 90%",
-                    toggleActions: "play none none reverse",
-                },
-                y: 40,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: "power3.out",
-            });
-
-            // Animate bottom bar
-            gsap.from(".footer-bottom", {
-                scrollTrigger: {
-                    trigger: ".footer-bottom",
-                    start: "top 95%",
-                    toggleActions: "play none none reverse",
-                },
-                opacity: 0,
-                duration: 0.8,
-                delay: 0.3,
-                ease: "power3.out",
-            });
-
-            // Animate divider line
-            gsap.from(".footer-divider", {
-                scrollTrigger: {
-                    trigger: ".footer-divider",
-                    start: "top 95%",
-                    toggleActions: "play none none reverse",
-                },
-                scaleX: 0,
-                duration: 1,
-                ease: "power3.inOut",
-                transformOrigin: "left center",
-            });
-        }, footerRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <footer ref={footerRef} className="bg-[#001C25] text-white py-24">
+        <footer className="bg-[#001C25] text-white py-24">
             <div className="w-full px-8 md:px-16 lg:px-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
                     {/* Logo & Description */}

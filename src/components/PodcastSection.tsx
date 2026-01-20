@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Play, Headphones, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { episodes } from "@/data/episodes";
 
-gsap.registerPlugin(ScrollTrigger);
+// Register once
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Get all episodes with YouTube videos grouped by season
 const allEpisodes = episodes.filter(ep => ep.youtube);
@@ -37,33 +40,46 @@ export function PodcastSection() {
         return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!sectionRef.current) return;
+
         const ctx = gsap.context(() => {
             // Header animation
-            gsap.from(".podcast-header-content > *", {
-                scrollTrigger: {
-                    trigger: ".podcast-header-content",
-                    start: "top 80%",
-                },
+            gsap.fromTo(".podcast-header-content > *", {
                 y: 60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".podcast-header-content",
+                    start: "top 85%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 stagger: 0.15,
                 ease: "power3.out",
             });
 
             // Carousel container animation
-            gsap.from(".carousel-container", {
-                scrollTrigger: {
-                    trigger: ".carousel-container",
-                    start: "top 85%",
-                },
+            gsap.fromTo(".carousel-container", {
                 y: 60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".carousel-container",
+                    start: "top 90%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 ease: "power3.out",
             });
         }, sectionRef);
+
+        // Refresh ScrollTrigger after setup
+        ScrollTrigger.refresh();
 
         return () => ctx.revert();
     }, []);
@@ -179,11 +195,10 @@ export function PodcastSection() {
                                 <button
                                     key={season.id}
                                     onClick={() => handleSeasonChange(season.id as number | "all")}
-                                    className={`px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
-                                        activeSeason === season.id
-                                            ? "bg-white text-primary"
-                                            : "bg-white/10 text-white hover:bg-white/20"
-                                    }`}
+                                    className={`px-5 py-2.5 text-sm font-medium transition-all duration-200 ${activeSeason === season.id
+                                        ? "bg-white text-primary"
+                                        : "bg-white/10 text-white hover:bg-white/20"
+                                        }`}
                                 >
                                     {season.label}
                                     {season.id !== "all" && (
@@ -221,9 +236,8 @@ export function PodcastSection() {
                         onMouseMove={handleMouseMove}
                         onMouseUp={handleMouseUp}
                         onMouseLeave={handleMouseUp}
-                        className={`flex gap-6 overflow-x-auto scrollbar-hide pb-6 ${
-                            isDragging ? "cursor-grabbing select-none" : "cursor-grab"
-                        }`}
+                        className={`flex gap-6 overflow-x-auto scrollbar-hide pb-6 ${isDragging ? "cursor-grabbing select-none" : "cursor-grab"
+                            }`}
                     >
                         <div ref={trackRef} className="flex gap-6">
                             {filteredEpisodes.map((episode) => (

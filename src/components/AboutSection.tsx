@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Building2, Leaf, Users, Mic } from "lucide-react";
 import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger);
+// Register once
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 const highlights = [
     {
@@ -34,73 +37,69 @@ const highlights = [
 export function AboutSection() {
     const sectionRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!sectionRef.current) return;
+
         const ctx = gsap.context(() => {
             // Animate section header
-            gsap.from(".about-header", {
-                scrollTrigger: {
-                    trigger: ".about-header",
-                    start: "top 80%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".about-header", {
                 y: 60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".about-header",
+                    start: "top 85%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 ease: "power3.out",
             });
 
             // Animate image with reveal effect
-            gsap.from(".about-image", {
-                scrollTrigger: {
-                    trigger: ".about-image",
-                    start: "top 75%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".about-image", {
                 clipPath: "inset(100% 0 0 0)",
-                duration: 1.2,
-                ease: "power3.inOut",
-            });
-
-            // Animate image overlay
-            gsap.from(".about-image-overlay", {
+            }, {
                 scrollTrigger: {
                     trigger: ".about-image",
-                    start: "top 75%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
+                    start: "top 80%",
+                    once: true,
                 },
-                scaleX: 1,
+                clipPath: "inset(0% 0 0 0)",
                 duration: 1.2,
                 ease: "power3.inOut",
             });
 
             // Animate bio text
-            gsap.from(".about-bio > *", {
-                scrollTrigger: {
-                    trigger: ".about-bio",
-                    start: "top 75%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".about-bio > *", {
                 y: 40,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".about-bio",
+                    start: "top 80%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.15,
                 ease: "power3.out",
             });
 
             // Animate highlight cards with stagger
-            gsap.from(".highlight-card", {
-                scrollTrigger: {
-                    trigger: ".highlights-grid",
-                    start: "top 80%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".highlight-card", {
                 y: 60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".highlights-grid",
+                    start: "top 85%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.15,
                 ease: "power3.out",
@@ -118,6 +117,9 @@ export function AboutSection() {
                 },
             });
         }, sectionRef);
+
+        // Refresh ScrollTrigger after setup
+        ScrollTrigger.refresh();
 
         return () => ctx.revert();
     }, []);

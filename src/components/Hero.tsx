@@ -1,19 +1,24 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Play } from "lucide-react";
 import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger);
+// Register once
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export function Hero() {
     const heroRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!heroRef.current) return;
+
         const ctx = gsap.context(() => {
             // Silk flow animation for background blobs
             gsap.to(".silk-blob-1", {
@@ -49,56 +54,79 @@ export function Hero() {
             // Staggered entrance animation
             const tl = gsap.timeline({ delay: 0.3 });
 
-            tl.from(".hero-line", {
+            tl.fromTo(".hero-line", {
                 width: 0,
+            }, {
+                width: "6rem",
                 duration: 1.2,
                 ease: "power4.inOut",
             })
-            .from(".hero-badge", {
-                y: 20,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out",
-            }, "-=0.6")
-            .from(".hero-title-line", {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "power3.out",
-            }, "-=0.4")
-            .from(".hero-subtitle", {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out",
-            }, "-=0.5")
-            .from(".hero-description", {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out",
-            }, "-=0.4")
-            .from(".hero-cta", {
-                y: 20,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "power3.out",
-            }, "-=0.3")
-            .from(".hero-stat", {
-                y: 30,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: "power3.out",
-            }, "-=0.2")
-            .from(".scroll-indicator", {
-                opacity: 0,
-                y: -20,
-                duration: 0.8,
-                ease: "power3.out",
-            }, "-=0.2");
+                .fromTo(".hero-badge", {
+                    y: 20,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                }, "-=0.6")
+                .fromTo(".hero-title-line", {
+                    y: 100,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.15,
+                    ease: "power3.out",
+                }, "-=0.4")
+                .fromTo(".hero-subtitle", {
+                    y: 30,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                }, "-=0.5")
+                .fromTo(".hero-description", {
+                    y: 30,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out",
+                }, "-=0.4")
+                .fromTo(".hero-cta", {
+                    y: 20,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                }, "-=0.3")
+                .fromTo(".hero-stat", {
+                    y: 30,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.08,
+                    ease: "power3.out",
+                }, "-=0.2")
+                .fromTo(".scroll-indicator", {
+                    opacity: 0,
+                    y: -20,
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                }, "-=0.2");
 
             // Parallax effect on scroll
             gsap.to(".hero-bg-video", {

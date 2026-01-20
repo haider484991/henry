@@ -1,57 +1,69 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, MapPin, Mail, Clock, Linkedin, Twitter } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+// Register once
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export function ContactForm() {
     const sectionRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!sectionRef.current) return;
+
         const ctx = gsap.context(() => {
             // Animate left side content
-            gsap.from(".contact-info > *", {
-                scrollTrigger: {
-                    trigger: ".contact-info",
-                    start: "top 75%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".contact-info > *", {
                 x: -60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".contact-info",
+                    start: "top 80%",
+                    once: true,
+                },
+                x: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: "power3.out",
             });
 
             // Animate form
-            gsap.from(".contact-form", {
-                scrollTrigger: {
-                    trigger: ".contact-form",
-                    start: "top 75%",
-                    end: "bottom 60%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".contact-form", {
                 x: 60,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".contact-form",
+                    start: "top 80%",
+                    once: true,
+                },
+                x: 0,
+                opacity: 1,
                 duration: 1,
                 ease: "power3.out",
             });
 
             // Animate form fields individually
-            gsap.from(".form-field", {
-                scrollTrigger: {
-                    trigger: ".contact-form",
-                    start: "top 70%",
-                    toggleActions: "play none none reverse",
-                },
+            gsap.fromTo(".form-field", {
                 y: 30,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".contact-form",
+                    start: "top 75%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 0.6,
                 stagger: 0.1,
                 delay: 0.3,
@@ -70,6 +82,9 @@ export function ContactForm() {
                 },
             });
         }, sectionRef);
+
+        // Refresh ScrollTrigger after setup
+        ScrollTrigger.refresh();
 
         return () => ctx.revert();
     }, []);

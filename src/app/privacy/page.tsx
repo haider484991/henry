@@ -64,7 +64,7 @@ export default function PrivacyPage() {
                             Henry Harrison<br />
                             17290 Preston Road #300 B2<br />
                             Dallas, Texas 75252<br />
-                            Email: info@henryharrison.com
+                            Email: <a href="mailto:hoharrison@sbcglobal.net" className="text-primary hover:underline">hoharrison@sbcglobal.net</a>
                         </p>
                     </div>
                 </div>
