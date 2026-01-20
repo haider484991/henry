@@ -24,7 +24,8 @@ const dataPath = join(__dirname, '..', 'supabase', 'parsed-wordpress-data.json')
 const data = JSON.parse(readFileSync(dataPath, 'utf-8'));
 
 // Helper to clean HTML content
-function cleanHtml(html, isNews = false) {
+// formatHeadings: apply heading detection for news and podcast content
+function cleanHtml(html, formatHeadings = false) {
     if (!html) return '';
 
     let cleaned = html
@@ -68,26 +69,64 @@ function cleanHtml(html, isNews = false) {
     // Remove any standalone date patterns
     cleaned = cleaned.replace(/^\s*\d{1,2}\/\d{1,2}\/\d{4}\s*/g, '');
 
-    // For news articles, wrap unwrapped text in paragraphs
-    if (isNews) {
-        // Split by headings and process each section
-        const parts = cleaned.split(/(<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>)/gi);
-        cleaned = parts.map(part => {
-            // If it's a heading, keep it as is
-            if (part.match(/^<h[1-6]/i)) return part;
-            // If text isn't already wrapped in a block element, wrap it
-            const trimmed = part.trim();
-            if (trimmed && !trimmed.match(/^<(p|div|ul|ol|blockquote|figure)/i)) {
-                // Wrap in paragraph if it has content
-                if (trimmed.length > 0) {
-                    return `<p>${trimmed}</p>`;
-                }
+    // For news articles and podcast content, detect headings and format properly
+    if (formatHeadings) {
+        // First, detect heading-like lines and convert them to h2 tags
+        // These are typically short lines (< 80 chars) that look like titles
+        const lines = cleaned.split(/\n+/);
+        const processedLines = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            let line = lines[i].trim();
+
+            // Skip empty lines
+            if (!line) continue;
+
+            // Skip if already a heading tag
+            if (line.match(/^<h[1-6]/i)) {
+                processedLines.push(line);
+                continue;
             }
-            return part;
-        }).join('\n');
+
+            // Skip if already wrapped in a block element
+            if (line.match(/^<(p|div|ul|ol|blockquote|figure)/i)) {
+                processedLines.push(line);
+                continue;
+            }
+
+            // Strip any inline tags to check the text content
+            const textContent = line.replace(/<[^>]*>/g, '').trim();
+
+            // Detect heading-like lines:
+            // - Starts with capital letter
+            // - Under 100 characters
+            // - Doesn't end with common sentence punctuation (. , ; :)
+            // - Contains at least 2 words
+            // - Doesn't start with common paragraph starters
+            const isHeadingLike = (
+                textContent.length > 5 &&
+                textContent.length < 100 &&
+                /^[A-Z]/.test(textContent) &&
+                !/[.,;:]$/.test(textContent) &&
+                textContent.split(/\s+/).length >= 2 &&
+                textContent.split(/\s+/).length <= 12 &&
+                !/^(The |A |An |In |On |At |For |With |By |From |This |That |These |Those |It |We |They |He |She |However|Therefore|Furthermore|Additionally|Moreover|Although|While |Despite|According)/i.test(textContent)
+            );
+
+            if (isHeadingLike) {
+                processedLines.push(`<h2>${textContent}</h2>`);
+            } else if (textContent.length > 0) {
+                processedLines.push(`<p>${line}</p>`);
+            }
+        }
+
+        cleaned = processedLines.join('\n');
 
         // Clean up any double paragraph wrapping
         cleaned = cleaned.replace(/<p>\s*<p>/g, '<p>').replace(/<\/p>\s*<\/p>/g, '</p>');
+        // Clean up any paragraph wrapping around headings
+        cleaned = cleaned.replace(/<p>\s*(<h[1-6][^>]*>)/g, '$1');
+        cleaned = cleaned.replace(/(<\/h[1-6]>)\s*<\/p>/g, '$1');
     }
 
     // Clean up excessive whitespace
@@ -206,7 +245,7 @@ async function syncData() {
             continue;
         }
 
-        const content = cleanHtml(podcast.content);
+        const content = cleanHtml(podcast.content, true); // true = format headings
 
         // Clean the excerpt or create one from content
         let description = podcast.excerpt || '';
