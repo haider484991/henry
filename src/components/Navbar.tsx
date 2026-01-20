@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Menu, X, ArrowRight, Play, Headphones, ChevronRight, Building2, Leaf, Mic, Calendar, MapPin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
+import { getSeasons, getEpisodes } from "@/lib/actions";
 
 // Featured news for mega menu
 const featuredNews = [
@@ -32,12 +33,20 @@ const featuredNews = [
     },
 ];
 
-// Featured episodes for mega menu
-const featuredEpisodes = [
-    { guest: "Marc Ollivier", slug: "marcolivia", season: 4, episode: 17 },
-    { guest: "Dida Clifton", slug: "dida-clifton-theofficesquad", season: 4, episode: 16 },
-    { guest: "Chris McKee", slug: "chris-mckee", season: 3, episode: 10 },
-];
+interface Episode {
+    id: string;
+    slug: string;
+    guest: string;
+    season: number;
+    episode: number;
+}
+
+interface Season {
+    id: string;
+    number: number;
+    title: string;
+    published: boolean;
+}
 
 const podcastPlatforms = [
     { name: "Spotify", href: "https://open.spotify.com/show/06nY21wPva7YHFoYr9KtYN" },
@@ -49,9 +58,27 @@ export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+    const [seasons, setSeasons] = useState<Season[]>([]);
+    const [latestEpisodes, setLatestEpisodes] = useState<Episode[]>([]);
     const navRef = useRef<HTMLElement>(null);
     const megaMenuRef = useRef<HTMLDivElement>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
+    // Fetch seasons and episodes
+    useEffect(() => {
+        async function loadData() {
+            const [seasonsData, episodesData] = await Promise.all([
+                getSeasons(),
+                getEpisodes()
+            ]);
+            setSeasons(seasonsData.filter((s: Season) => s.published));
+            // Get latest 3 episodes
+            setLatestEpisodes(episodesData.slice(0, 3));
+        }
+        loadData();
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -62,11 +89,14 @@ export function Navbar() {
     }, []);
 
     // GSAP entrance animation
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".nav-item", {
+            gsap.fromTo(".nav-item", {
                 y: -20,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 0.6,
                 stagger: 0.1,
                 ease: "power2.out",
@@ -103,6 +133,11 @@ export function Navbar() {
         }, 150);
     };
 
+    const closeMenus = () => {
+        setActiveMegaMenu(null);
+        setIsMobileMenuOpen(false);
+    };
+
     const navLinks = [
         { name: "Home", href: "/", hasMegaMenu: false },
         { name: "About", href: "/about", hasMegaMenu: true },
@@ -129,6 +164,7 @@ export function Navbar() {
                         "nav-item flex items-center gap-3 text-lg font-semibold transition-colors",
                         isScrolled ? "text-primary" : "text-white"
                     )}
+                    onClick={closeMenus}
                 >
                     <div className={cn(
                         "w-10 h-10 flex items-center justify-center border-2 rounded-sm transition-colors",
@@ -159,6 +195,7 @@ export function Navbar() {
                                         : "text-white/80 hover:text-white",
                                     activeMegaMenu === link.name && "text-foreground"
                                 )}
+                                onClick={closeMenus}
                             >
                                 {link.name}
                                 <span className={cn(
@@ -180,6 +217,7 @@ export function Navbar() {
                             ? "bg-primary text-white hover:bg-primary/90"
                             : "bg-white text-primary hover:bg-white/90"
                     )}
+                    onClick={closeMenus}
                 >
                     Book a Meeting
                     <ArrowRight className="w-4 h-4" />
@@ -228,6 +266,7 @@ export function Navbar() {
                                             <Link
                                                 href="/about"
                                                 className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+                                                onClick={closeMenus}
                                             >
                                                 Full Biography
                                                 <ArrowRight className="w-4 h-4" />
@@ -286,6 +325,7 @@ export function Navbar() {
                                     <Link
                                         href="/contact"
                                         className="inline-flex items-center gap-2 px-5 py-3 bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+                                        onClick={closeMenus}
                                     >
                                         Contact
                                         <ArrowRight className="w-4 h-4" />
@@ -303,11 +343,12 @@ export function Navbar() {
                                 <div className="col-span-5 mega-menu-item">
                                     <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">Latest Episodes</h4>
                                     <div className="space-y-4">
-                                        {featuredEpisodes.map((ep, index) => (
+                                        {latestEpisodes.map((ep) => (
                                             <Link
                                                 key={ep.slug}
-                                                href={`/${ep.slug}`}
+                                                href={`/podcast/${ep.slug}`}
                                                 className="flex items-center gap-4 p-3 -mx-3 hover:bg-gray-50 transition-colors group"
+                                                onClick={closeMenus}
                                             >
                                                 <div className="w-14 h-14 bg-primary text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                                                     <Play className="w-6 h-6 ml-0.5" />
@@ -323,6 +364,7 @@ export function Navbar() {
                                     <Link
                                         href="/podcast"
                                         className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all mt-6"
+                                        onClick={closeMenus}
                                     >
                                         View All Episodes
                                         <ArrowRight className="w-4 h-4" />
@@ -333,19 +375,16 @@ export function Navbar() {
                                 <div className="col-span-3 mega-menu-item">
                                     <h4 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">Browse Seasons</h4>
                                     <div className="space-y-1">
-                                        {[
-                                            { name: "Season 4", href: "/season-4", episodes: 17 },
-                                            { name: "Season 3", href: "/entrepreneurs-business-and-finance-season-3", episodes: 10 },
-                                            { name: "Season 2", href: "/henry-harrison-dallas-tx-podcast-season-2", episodes: 11 },
-                                            { name: "Season 1", href: "/podcast", episodes: 11 },
-                                        ].map((season) => (
+                                        {seasons
+                                            .sort((a, b) => b.number - a.number)
+                                            .map((season) => (
                                             <Link
-                                                key={season.name}
-                                                href={season.href}
+                                                key={season.id}
+                                                href={`/podcast?season=${season.number}`}
                                                 className="flex items-center justify-between py-3 border-b border-gray-100 hover:bg-gray-50 -mx-3 px-3 transition-colors group"
+                                                onClick={closeMenus}
                                             >
-                                                <span className="font-medium text-foreground group-hover:text-primary transition-colors">{season.name}</span>
-                                                <span className="text-sm text-muted-foreground">{season.episodes} episodes</span>
+                                                <span className="font-medium text-foreground group-hover:text-primary transition-colors">{season.title || `Season ${season.number}`}</span>
                                             </Link>
                                         ))}
                                     </div>
@@ -372,6 +411,7 @@ export function Navbar() {
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="flex items-center justify-between py-2 px-3 bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
+                                                    onClick={closeMenus}
                                                 >
                                                     {platform.name}
                                                     <ChevronRight className="w-4 h-4" />
@@ -397,6 +437,7 @@ export function Navbar() {
                                                 key={news.slug}
                                                 href={`/${news.slug}`}
                                                 className="group"
+                                                onClick={closeMenus}
                                             >
                                                 <div className="aspect-[16/10] bg-gray-100 mb-4 overflow-hidden relative">
                                                     <Image
@@ -437,6 +478,7 @@ export function Navbar() {
                                                 key={cat.name}
                                                 href={cat.href}
                                                 className="flex items-center justify-between py-2 hover:text-primary transition-colors group"
+                                                onClick={closeMenus}
                                             >
                                                 <span className="text-sm font-medium">{cat.name}</span>
                                                 <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -449,6 +491,7 @@ export function Navbar() {
                                         <Link
                                             href="/contact"
                                             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+                                            onClick={closeMenus}
                                         >
                                             Subscribe
                                             <ArrowRight className="w-4 h-4" />
@@ -470,7 +513,7 @@ export function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 className="flex items-center justify-between text-lg font-medium text-foreground py-4 border-b border-gray-100"
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onClick={closeMenus}
                             >
                                 {link.name}
                                 <ChevronRight className="w-5 h-5 text-muted-foreground" />
@@ -488,6 +531,7 @@ export function Navbar() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="px-4 py-2 bg-gray-100 text-sm font-medium hover:bg-gray-200 transition-colors"
+                                        onClick={closeMenus}
                                     >
                                         {platform.name}
                                     </a>
@@ -498,7 +542,7 @@ export function Navbar() {
                         <Link
                             href="/book"
                             className="flex items-center justify-center gap-3 w-full px-6 py-4 bg-primary text-white font-medium"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={closeMenus}
                         >
                             Book a Meeting
                             <ArrowRight className="w-4 h-4" />

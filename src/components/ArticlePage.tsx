@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Link from "next/link";
@@ -22,21 +22,30 @@ interface ArticlePageProps {
 export default function ArticlePage({ article }: ArticlePageProps) {
     const pageRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!pageRef.current) return;
+
         const ctx = gsap.context(() => {
-            gsap.from(".article-hero > *", {
+            gsap.fromTo(".article-hero > *", {
                 y: 60,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 stagger: 0.15,
                 ease: "power3.out",
+                delay: 0.2,
             });
 
-            gsap.from(".article-content", {
+            gsap.fromTo(".article-content", {
                 y: 40,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
-                delay: 0.3,
+                delay: 0.5,
                 ease: "power3.out",
             });
         }, pageRef);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowLeft, Play, Headphones, ArrowRight, Phone, Mail, MapPin, ExternalLink, Share2, Clock } from "lucide-react";
@@ -25,102 +25,137 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
     const seasonLink = episode.season === 4
         ? "/season-4"
         : episode.season === 3
-        ? "/entrepreneurs-business-and-finance-season-3"
-        : episode.season === 2
-        ? "/henry-harrison-dallas-tx-podcast-season-2"
-        : "/podcast";
+            ? "/entrepreneurs-business-and-finance-season-3"
+            : episode.season === 2
+                ? "/henry-harrison-dallas-tx-podcast-season-2"
+                : "/podcast";
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if (!pageRef.current) return;
+
         const ctx = gsap.context(() => {
             // Hero animations
-            gsap.from(".hero-badge", {
+            gsap.fromTo(".hero-badge", {
                 y: -20,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 0.6,
                 ease: "power3.out",
+                stagger: 0.1,
             });
 
-            gsap.from(".hero-title", {
+            gsap.fromTo(".hero-title", {
                 y: 60,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 delay: 0.2,
                 ease: "power3.out",
             });
 
-            gsap.from(".hero-subtitle", {
+            gsap.fromTo(".hero-subtitle", {
                 y: 40,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 delay: 0.4,
                 ease: "power3.out",
             });
 
-            gsap.from(".hero-description", {
+            gsap.fromTo(".hero-description", {
                 y: 30,
                 opacity: 0,
+            }, {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 delay: 0.5,
                 ease: "power3.out",
             });
 
-            gsap.from(".hero-image", {
+            gsap.fromTo(".hero-image", {
                 scale: 1.1,
                 opacity: 0,
+            }, {
+                scale: 1,
+                opacity: 1,
                 duration: 1.2,
                 delay: 0.3,
                 ease: "power3.out",
             });
 
             // Content animations
-            gsap.from(".media-container", {
+            gsap.fromTo(".media-container", {
+                y: 60,
+                opacity: 0,
+            }, {
                 scrollTrigger: {
                     trigger: ".media-container",
                     start: "top 85%",
+                    once: true,
                 },
-                y: 60,
-                opacity: 0,
+                y: 0,
+                opacity: 1,
                 duration: 1,
                 ease: "power3.out",
             });
 
-            gsap.from(".content-section", {
-                scrollTrigger: {
-                    trigger: ".content-section",
-                    start: "top 80%",
-                },
+            gsap.fromTo(".content-section", {
                 y: 40,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".content-section",
+                    start: "top 85%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 stagger: 0.15,
                 ease: "power3.out",
             });
 
-            gsap.from(".sidebar-item", {
+            gsap.fromTo(".sidebar-item", {
+                x: 40,
+                opacity: 0,
+            }, {
                 scrollTrigger: {
                     trigger: ".sidebar-item",
                     start: "top 85%",
+                    once: true,
                 },
-                x: 40,
-                opacity: 0,
+                x: 0,
+                opacity: 1,
                 duration: 0.6,
                 stagger: 0.1,
                 ease: "power3.out",
             });
 
-            gsap.from(".related-card", {
-                scrollTrigger: {
-                    trigger: ".related-episodes",
-                    start: "top 80%",
-                },
+            gsap.fromTo(".related-card", {
                 y: 50,
                 opacity: 0,
+            }, {
+                scrollTrigger: {
+                    trigger: ".related-episodes",
+                    start: "top 85%",
+                    once: true,
+                },
+                y: 0,
+                opacity: 1,
                 duration: 0.7,
                 stagger: 0.12,
                 ease: "power3.out",
             });
         }, pageRef);
 
+        ScrollTrigger.refresh();
         return () => ctx.revert();
     }, []);
 

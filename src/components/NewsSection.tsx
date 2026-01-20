@@ -1,27 +1,16 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { getLatestArticles } from "@/data/articles";
 
 export function NewsSection() {
-    const items = [
-        {
-            label: "Dallas Black Chamber of Commerce",
-            title: "Distributes $30,000 in Grants to Minority Enterprises",
-            date: "Jul 1, 2024",
-            link: "#"
-        },
-        {
-            label: "Real Estate",
-            title: "Dominates Commercial Real Estate in 2024",
-            date: "Jun 26, 2024",
-            link: "#"
-        },
-        {
-            label: "Growth",
-            title: "Celina, Texas: America's Fastest-Growing City",
-            date: "Jun 18, 2024",
-            link: "#"
-        }
-    ];
+    const latestArticles = getLatestArticles(3);
+    const items = latestArticles.map(article => ({
+        label: article.category,
+        title: article.title,
+        date: article.date,
+        link: `/${article.slug}`,
+        image: article.image,
+    }));
 
     return (
         <section id="news" className="py-24 md:py-40 bg-background">

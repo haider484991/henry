@@ -24,7 +24,14 @@
       "Bash(powershell:*)",
       "Bash(do echo \"=== $guest ===\")",
       "Bash(find:*)",
-      "Bash(do sed -i 's/container px-6/w-full px-8 md:px-16 lg:px-24/g' \"$file\")"
+      "Bash(do sed -i 's/container px-6/w-full px-8 md:px-16 lg:px-24/g' \"$file\")",
+      "Bash(npm install:*)",
+      "Bash(npx tsx:*)",
+      "Bash(node scripts/sync-episodes.mjs:*)",
+      "Bash(node scripts/sync-articles.mjs:*)",
+      "Bash(node scripts/parse-wordpress.mjs:*)",
+      "Bash(node scripts/sync-wordpress-to-supabase.mjs:*)",
+      "Bash(node -e:*)"
     ]
   }
 }

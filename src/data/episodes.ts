@@ -1,4 +1,13 @@
+export interface GuestContact {
+    phone?: string;
+    email?: string;
+    address?: string;
+    website?: string;
+    websiteLabel?: string;
+}
+
 export interface Episode {
+    id?: string;
     slug: string;
     title: string;
     guest: string;
@@ -14,13 +23,11 @@ export interface Episode {
     subheadline?: string;
     fullDescription?: string;
     keyInsights?: string;
-    guestContact?: {
-        phone?: string;
-        email?: string;
-        address?: string;
-        website?: string;
-        websiteLabel?: string;
-    };
+    guestContact?: GuestContact;
+    // Metadata
+    createdAt?: string;
+    updatedAt?: string;
+    published?: boolean;
 }
 
 export const episodes: Episode[] = [
@@ -230,4 +237,30 @@ export function getEpisodeBySlug(slug: string): Episode | undefined {
 
 export function getEpisodesBySeason(season: number): Episode[] {
     return episodes.filter(ep => ep.season === season).sort((a, b) => a.episode - b.episode);
+}
+
+export function getAllSeasons(): number[] {
+    const seasons = [...new Set(episodes.map(ep => ep.season))];
+    return seasons.sort((a, b) => b - a);
+}
+
+export function getLatestEpisodes(count: number = 3): Episode[] {
+    return [...episodes]
+        .sort((a, b) => {
+            if (a.season !== b.season) return b.season - a.season;
+            return b.episode - a.episode;
+        })
+        .slice(0, count);
+}
+
+export function getEpisodesWithYouTube(): Episode[] {
+    return episodes.filter(ep => ep.youtube);
+}
+
+export function getTotalEpisodeCount(): number {
+    return episodes.length;
+}
+
+export function getSeasonEpisodeCount(season: number): number {
+    return episodes.filter(ep => ep.season === season).length;
 }
