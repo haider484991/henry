@@ -60,7 +60,7 @@ export function Footer() {
     return (
         <footer ref={footerRef} className="bg-[#001C25] text-white py-24">
             <div className="w-full px-8 md:px-16 lg:px-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
                     {/* Logo & Description */}
                     <div className="footer-col lg:col-span-1">
                         <div className="flex items-center gap-3 mb-6">
@@ -100,10 +100,10 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Menu */}
                     <div className="footer-col">
                         <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
-                            Quick Links
+                            Menu
                         </h4>
                         <ul className="space-y-4 text-sm">
                             <li>
@@ -115,12 +115,6 @@ export function Footer() {
                             <li>
                                 <Link href="/about" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
                                     About
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/podcast" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    Podcast
                                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </Link>
                             </li>
@@ -137,8 +131,47 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/book" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    Book a Meeting
+                                <Link href="/podcast" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Podcasts
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Terms */}
+                    <div className="footer-col">
+                        <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
+                            Terms
+                        </h4>
+                        <ul className="space-y-4 text-sm">
+                            <li>
+                                <Link href="/privacy" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Privacy / Cookie
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/user-agreement" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    User Agreement
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/disclaimer" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Disclaimer
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/dmca" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    DMCA
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/acceptable-use" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Acceptable Use
                                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </Link>
                             </li>
@@ -178,21 +211,25 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact */}
+                    {/* Location */}
                     <div className="footer-col">
                         <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
-                            Contact
+                            Location
                         </h4>
                         <ul className="space-y-4 text-sm text-white/60">
                             <li>17290 Preston Road #300 B2</li>
                             <li>Dallas, Texas 75252</li>
                             <li className="pt-2">
-                                <a href="mailto:info@henryharrison.com" className="hover:text-white transition-colors">
-                                    info@henryharrison.com
+                                <span className="text-white/40 text-xs block mb-1">Phone</span>
+                                <a href="tel:+14693745934" className="hover:text-white transition-colors">
+                                    (469) 374-5934
                                 </a>
                             </li>
-                            <li className="text-white/40 text-xs pt-4">
-                                Mon - Sun: 9:00 AM - 5:00 PM
+                            <li className="pt-2">
+                                <span className="text-white/40 text-xs block mb-1">Email</span>
+                                <a href="mailto:podcast@henryharrison.com" className="hover:text-white transition-colors">
+                                    podcast@henryharrison.com
+                                </a>
                             </li>
                         </ul>
                     </div>
