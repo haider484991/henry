@@ -15,7 +15,7 @@ interface Article {
     date: string;
     category: string;
     image: string;
-    author: string;
+    author?: string;
     tags?: string[];
     published: boolean;
     featured: boolean;
