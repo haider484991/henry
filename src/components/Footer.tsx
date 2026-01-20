@@ -1,0 +1,222 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { ArrowUpRight, Linkedin, Twitter, Youtube } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export function Footer() {
+    const footerRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Animate footer columns
+            gsap.from(".footer-col", {
+                scrollTrigger: {
+                    trigger: footerRef.current,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse",
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out",
+            });
+
+            // Animate bottom bar
+            gsap.from(".footer-bottom", {
+                scrollTrigger: {
+                    trigger: ".footer-bottom",
+                    start: "top 95%",
+                    toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.3,
+                ease: "power3.out",
+            });
+
+            // Animate divider line
+            gsap.from(".footer-divider", {
+                scrollTrigger: {
+                    trigger: ".footer-divider",
+                    start: "top 95%",
+                    toggleActions: "play none none reverse",
+                },
+                scaleX: 0,
+                duration: 1,
+                ease: "power3.inOut",
+                transformOrigin: "left center",
+            });
+        }, footerRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <footer ref={footerRef} className="bg-[#001C25] text-white py-20">
+            <div className="container px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    {/* Logo & Description */}
+                    <div className="footer-col lg:col-span-1">
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="w-10 h-10 flex items-center justify-center border-2 border-white rounded-sm">
+                                <span className="text-sm font-bold">HH</span>
+                            </div>
+                            <span className="uppercase tracking-[0.2em] text-xs font-medium">
+                                Henry Harrison
+                            </span>
+                        </div>
+                        <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
+                            Dallas, Texas entrepreneur with over 30 years of experience building businesses and helping entrepreneurs succeed. Passionate about sustainable technologies.
+                        </p>
+                        <div className="flex gap-3">
+                            <a
+                                href="https://www.linkedin.com/in/henryharrisondallas/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"
+                            >
+                                <Linkedin className="w-4 h-4" />
+                            </a>
+                            <a
+                                href="#"
+                                className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"
+                            >
+                                <Twitter className="w-4 h-4" />
+                            </a>
+                            <a
+                                href="https://henryharrison.com/podcast/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"
+                            >
+                                <Youtube className="w-4 h-4" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="footer-col">
+                        <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
+                            Quick Links
+                        </h4>
+                        <ul className="space-y-4 text-sm">
+                            <li>
+                                <Link href="/" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Home
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/about" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    About
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/podcast" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Podcast
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/news" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    News
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/contact" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Contact
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/book" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Book a Meeting
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Podcast */}
+                    <div className="footer-col">
+                        <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
+                            Podcast
+                        </h4>
+                        <ul className="space-y-4 text-sm">
+                            <li>
+                                <Link href="/podcast" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    All Episodes
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/season-4" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Season 4
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/entrepreneurs-business-and-finance-season-3" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Season 3
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/henry-harrison-dallas-tx-podcast-season-2" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
+                                    Season 2
+                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contact */}
+                    <div className="footer-col">
+                        <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
+                            Contact
+                        </h4>
+                        <ul className="space-y-4 text-sm text-white/60">
+                            <li>17290 Preston Road #300 B2</li>
+                            <li>Dallas, Texas 75252</li>
+                            <li className="pt-2">
+                                <a href="mailto:info@henryharrison.com" className="hover:text-white transition-colors">
+                                    info@henryharrison.com
+                                </a>
+                            </li>
+                            <li className="text-white/40 text-xs pt-4">
+                                Mon - Sun: 9:00 AM - 5:00 PM
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Divider */}
+                <div className="footer-divider h-[1px] bg-white/10 mb-8" />
+
+                {/* Bottom Bar */}
+                <div className="footer-bottom flex flex-col md:flex-row justify-between items-center text-xs text-white/40 gap-4">
+                    <p>&copy; {new Date().getFullYear()} Henry Harrison. All rights reserved.</p>
+                    <div className="flex items-center gap-6">
+                        <Link href="/privacy" className="hover:text-white transition-colors">
+                            Privacy Policy
+                        </Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">
+                            Terms of Service
+                        </Link>
+                        <Link href="/sitemap.xml" className="hover:text-white transition-colors">
+                            Sitemap
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+}

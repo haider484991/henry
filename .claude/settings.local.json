@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:henryharrison.com)",
+      "WebSearch",
+      "Bash(npm run build:*)",
+      "WebFetch(domain:www.youtube.com)",
+      "WebFetch(domain:soundcloud.com)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.henryharrisondallas.io)",
+      "WebFetch(domain:open.spotify.com)",
+      "WebFetch(domain:rss.com)",
+      "Bash(grep:*)",
+      "Bash(for slug in \"chris-mckee\" \"don-williams\" \"subbase-ceo-eric-helitzer\" \"josh-levy-document-crunch\" \"private-jeweler-carter-malouf\")",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(for slug in \"henry-harrison-tim-goeglein\" \"new-artisan-distillery-don-short\" \"john-cornelsen-evolving-texas-indigo-yoga-juggle\" \"bob-fox\" \"low-voltage-switchgear-manufacturer-jeff-strong-corr-solutions-electrical\")",
+      "Bash(for slug in \"dallas-tx-henry-harrison-podcast-s2-ep1-david-wang\" \"dallas-tx-tom-motlow\" \"dallas-henry-harrison-shark-tanks-hire-santa-mitch-allen\" \"karl-chiao\" \"chloe-smith\")",
+      "Bash(for slug in \"dallas-henry-harrison-liam-coakley\" \"dallas-henry-harrison-james-benham\" \"dallas-henry-harrison-steve-dellorto\" \"advancing-cancer-treatments-paul-romness\" \"real-estate-entrepreneurship-jeremy-brandt\" \"bob-mccarthys-entrepreneurial-journey\")",
+      "Bash(for slug in \"henry-harrison-podcast-rick-kersey-episode-01\" \"henry-harrison-doug-hardwick-dallas-texas\" \"henry-harrison-podcast-billy-gee\" \"henry-harrison-podcast-jonathon-ringler\" \"henry-harrison-podcast-larry-rau\")",
+      "Bash(for slug in \"henry-harrison-doug-hardwick-dallas-texas\" \"henry-harrison-podcast-billy-gee\" \"henry-harrison-podcast-jonathon-ringler\" \"henry-harrison-podcast-larry-rau\" \"henry-harrison-dallas-texas-john-voigt\")",
+      "Bash(for:*)",
+      "Bash(powershell:*)",
+      "Bash(do echo \"=== $guest ===\")"
+    ]
+  }
+}
