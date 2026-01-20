@@ -158,6 +158,7 @@ export const episodes: Episode[] = [
         episode: 6,
         description: "Join Henry as he chats with John Voigt, a former professional artist turned entrepreneur and owner of Tribute Kitchen and Bath in Dallas, Texas.",
         soundcloud: "henry-harrison-podcast-episode-06-john-voigt",
+        youtube: "U1vLJb8XVHM",
         headline: "Episode 06: John Voigt",
         subheadline: "From Professional Artist to Entrepreneur"
     },
@@ -169,6 +170,7 @@ export const episodes: Episode[] = [
         episode: 7,
         description: "From Dallas, Henry Harrison explores the fascinating journey of Gary Burrows in this episode of the Henry Harrison Entrepreneurs, Business, and Finance Podcast.",
         soundcloud: "gary-burrows",
+        youtube: "CZ3CsLU0EME",
         headline: "Episode 07: Gary Burrows",
         subheadline: "A Fascinating Entrepreneurial Journey"
     },
@@ -180,6 +182,7 @@ export const episodes: Episode[] = [
         episode: 8,
         description: "Dallas' Henry Harrison Entrepreneurs, Business, and Finance Podcast - Henry engages in a captivating conversation with Wilene Dunn.",
         soundcloud: "henry-harrison-podcast-episode-08-wilene-dunn",
+        youtube: "5oeDvXFo8F4",
         headline: "Episode 08: Wilene Dunn",
         subheadline: "A Captivating Conversation on Business"
     },
@@ -191,6 +194,7 @@ export const episodes: Episode[] = [
         episode: 9,
         description: "Henry Harrison Dallas | Jeff Vernon of Mineral Royalties Group offers unique insights into the complexities of the oil and gas industry.",
         soundcloud: "henry-harrison-dallas-episode-09-jeff-vernon",
+        youtube: "3X81jmA9Z2Q",
         headline: "Episode 09: Jeff Vernon",
         subheadline: "Mineral Royalties Group - Oil and Gas Industry Insights"
     },
@@ -202,6 +206,7 @@ export const episodes: Episode[] = [
         episode: 10,
         description: "Gain invaluable insights into the world of business transfers as Henry Harrison sits down with Alex Vantarakis, an authority and recognized expert in the field!",
         soundcloud: "henry-harrison-dallas-podcast-alex-vantarakis-episode-10",
+        youtube: "08HfiUin8OA",
         headline: "Episode 10: Alex Vantarakis",
         subheadline: "Expert in Business Transfers"
     },
@@ -213,6 +218,7 @@ export const episodes: Episode[] = [
         episode: 11,
         description: "Henry Harrison Dallas TX Podcast features Courtland Kilpatrick discussing business and entrepreneurship in Dallas, Texas.",
         soundcloud: "henry-harrison-dallas-tx-podcast-courtland-kilpatrick-episode-11",
+        youtube: "Rm-QVCUu7b8",
         headline: "Episode 11: Courtland Kilpatrick",
         subheadline: "Business and Entrepreneurship in Dallas"
     },
