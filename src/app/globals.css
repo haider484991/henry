@@ -244,12 +244,29 @@ html {
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: var(--foreground);
   }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
 }
 
-/* Container */
+/* Container - Full Width */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -338,6 +355,24 @@ html {
 
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
 }
 
 /* Stagger delay utilities */

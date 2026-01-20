@@ -54,8 +54,8 @@ export function FocusSection() {
     }, []);
 
     return (
-        <section id="services" ref={sectionRef} className="py-24 md:py-32 bg-secondary/30">
-            <div className="container px-6">
+        <section id="services" ref={sectionRef} className="py-24 md:py-40 bg-secondary/30">
+            <div className="w-full px-8 md:px-16 lg:px-24">
                 {/* Section Header */}
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <p className="text-muted-foreground leading-relaxed">

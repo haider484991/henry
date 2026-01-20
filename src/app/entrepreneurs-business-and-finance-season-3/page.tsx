@@ -53,7 +53,7 @@ export default function Season3Page() {
     return (
         <div ref={pageRef} className="min-h-screen bg-background">
             <section className="relative py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="season-hero max-w-4xl">
                         <Link href="/podcast" className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 mb-6 transition-opacity">
                             <Headphones className="w-4 h-4" />
@@ -70,7 +70,7 @@ export default function Season3Page() {
             </section>
 
             <section className="py-24 md:py-32">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="episodes-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {episodes.map((episode, index) => (
                             <Link
@@ -101,7 +101,7 @@ export default function Season3Page() {
             </section>
 
             <section className="py-16 bg-secondary/30">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <h2 className="text-2xl font-medium text-foreground mb-8">Other Seasons</h2>
                     <div className="flex flex-wrap gap-4">
                         <Link href="/season-4" className="px-6 py-3 bg-white border border-border hover:border-primary hover:text-primary transition-colors">

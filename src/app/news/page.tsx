@@ -132,7 +132,7 @@ export default function NewsPage() {
         <div ref={pageRef} className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="news-hero max-w-4xl">
                         <p className="text-sm uppercase tracking-widest opacity-70 mb-4">News</p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6">
@@ -147,7 +147,7 @@ export default function NewsPage() {
 
             {/* News Grid */}
             <section className="py-24 md:py-32">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="news-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {articles.map((article) => (
                             <Link
@@ -187,7 +187,7 @@ export default function NewsPage() {
 
             {/* Categories */}
             <section className="py-16 bg-secondary/30">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <h2 className="text-2xl font-medium text-foreground mb-8">Categories</h2>
                     <div className="flex flex-wrap gap-4">
                         <Link

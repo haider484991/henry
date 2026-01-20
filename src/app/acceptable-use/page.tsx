@@ -5,7 +5,7 @@ export default function AcceptableUsePage() {
     return (
         <div className="min-h-screen bg-background">
             <section className="py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <Link href="/" className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 mb-6 transition-opacity">
                         <ArrowLeft className="w-4 h-4" />
                         Back to Home
@@ -15,7 +15,7 @@ export default function AcceptableUsePage() {
             </section>
 
             <section className="py-16 md:py-24">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="max-w-3xl">
                         <p className="text-muted-foreground mb-8">Last updated: January 2024</p>
 

@@ -53,7 +53,7 @@ export default function ContactPage() {
         <div ref={pageRef} className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="contact-hero max-w-4xl">
                         <p className="text-sm uppercase tracking-widest opacity-70 mb-4">Contact</p>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight mb-6">
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
             {/* Contact Section */}
             <section className="py-24 md:py-32">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                         {/* Contact Info */}
                         <div className="contact-info">

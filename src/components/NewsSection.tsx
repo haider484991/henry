@@ -24,8 +24,8 @@ export function NewsSection() {
     ];
 
     return (
-        <section id="news" className="py-24 md:py-32 bg-background">
-            <div className="container px-6">
+        <section id="news" className="py-24 md:py-40 bg-background">
+            <div className="w-full px-8 md:px-16 lg:px-24">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
                     <div>

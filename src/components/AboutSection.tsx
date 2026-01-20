@@ -123,8 +123,8 @@ export function AboutSection() {
     }, []);
 
     return (
-        <section id="about" ref={sectionRef} className="py-24 md:py-32 bg-background overflow-hidden">
-            <div className="container px-6">
+        <section id="about" ref={sectionRef} className="py-24 md:py-40 bg-background overflow-hidden">
+            <div className="w-full px-8 md:px-16 lg:px-24">
                 {/* Section Header */}
                 <div className="about-header max-w-3xl mb-20">
                     <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">About</p>

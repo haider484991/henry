@@ -58,8 +58,8 @@ export function Footer() {
     }, []);
 
     return (
-        <footer ref={footerRef} className="bg-[#001C25] text-white py-20">
-            <div className="container px-6">
+        <footer ref={footerRef} className="bg-[#001C25] text-white py-24">
+            <div className="w-full px-8 md:px-16 lg:px-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Logo & Description */}
                     <div className="footer-col lg:col-span-1">

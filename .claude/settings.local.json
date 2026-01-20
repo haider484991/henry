@@ -22,7 +22,9 @@
       "Bash(for slug in \"henry-harrison-doug-hardwick-dallas-texas\" \"henry-harrison-podcast-billy-gee\" \"henry-harrison-podcast-jonathon-ringler\" \"henry-harrison-podcast-larry-rau\" \"henry-harrison-dallas-texas-john-voigt\")",
       "Bash(for:*)",
       "Bash(powershell:*)",
-      "Bash(do echo \"=== $guest ===\")"
+      "Bash(do echo \"=== $guest ===\")",
+      "Bash(find:*)",
+      "Bash(do sed -i 's/container px-6/w-full px-8 md:px-16 lg:px-24/g' \"$file\")"
     ]
   }
 }

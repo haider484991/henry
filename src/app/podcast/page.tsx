@@ -132,7 +132,7 @@ export default function PodcastPage() {
         <div ref={pageRef} className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="podcast-hero max-w-4xl">
                         <div className="flex items-center gap-3 mb-6">
                             <Headphones className="w-8 h-8" />
@@ -163,7 +163,7 @@ export default function PodcastPage() {
 
             {/* Podcast Trailer Section */}
             <section className="py-16 md:py-24 bg-background">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Video */}
                         <div className="aspect-video bg-black rounded overflow-hidden">
@@ -205,7 +205,7 @@ export default function PodcastPage() {
             {/* Seasons */}
             {seasons.map((season, seasonIndex) => (
                 <section key={season.name} className={`season-${seasonIndex} py-16 md:py-24 ${seasonIndex % 2 === 0 ? 'bg-background' : 'bg-secondary/30'}`}>
-                    <div className="container px-6">
+                    <div className="w-full px-8 md:px-16 lg:px-24">
                         <div className="flex items-center justify-between mb-12">
                             <h2 className="text-3xl md:text-4xl font-medium text-foreground">
                                 {season.name}
@@ -249,7 +249,7 @@ export default function PodcastPage() {
 
             {/* CTA Section */}
             <section className="py-24 md:py-32 bg-primary text-primary-foreground">
-                <div className="container px-6 text-center">
+                <div className="w-full px-8 md:px-16 lg:px-24 text-center">
                     <h2 className="text-3xl md:text-4xl font-medium mb-6">
                         Want to Be a Guest?
                     </h2>

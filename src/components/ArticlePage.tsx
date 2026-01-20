@@ -48,7 +48,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
         <div ref={pageRef} className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative py-32 md:py-40 bg-primary text-primary-foreground">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="article-hero max-w-4xl">
                         <Link
                             href="/news"
@@ -76,7 +76,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 
             {/* Article Content */}
             <section className="py-16 md:py-24">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="article-content max-w-3xl mx-auto">
                         {article.image && (
                             <div className="relative aspect-[16/9] mb-10 overflow-hidden">
@@ -145,7 +145,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
 
             {/* Related News */}
             <section className="py-16 bg-secondary/30">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="flex items-center justify-between mb-8">
                         <h2 className="text-2xl font-medium text-foreground">
                             More News

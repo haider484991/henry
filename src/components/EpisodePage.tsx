@@ -148,7 +148,7 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
                 )}
 
-                <div className="container px-6 pb-16 pt-40 relative z-10">
+                <div className="w-full px-8 md:px-16 lg:px-24 pb-16 pt-40 relative z-10">
                     <div className="max-w-4xl">
                         {/* Back Link */}
                         <Link
@@ -189,7 +189,7 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
 
             {/* Main Content */}
             <section className="py-16 md:py-24">
-                <div className="container px-6">
+                <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
                             {/* Main Content Column */}
@@ -442,7 +442,7 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
             {/* Related Episodes */}
             {relatedEpisodes.length > 0 && (
                 <section className="related-episodes py-20 bg-gradient-to-b from-secondary/30 to-background">
-                    <div className="container px-6">
+                    <div className="w-full px-8 md:px-16 lg:px-24">
                         <div className="max-w-7xl mx-auto">
                             <div className="flex items-center justify-between mb-12">
                                 <div>
