@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Play, Headphones, ExternalLink, Phone, Mail, MapPin } from "lucide-react";
@@ -29,9 +30,18 @@ interface Episode {
 }
 
 export function EpisodeContent({ episode }: { episode: Episode }) {
+    const [imageError, setImageError] = useState(false);
+
+    // Try maxresdefault first, fall back to hqdefault if needed
+    const getYoutubeThumbnail = (videoId: string) => {
+        return imageError
+            ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+            : `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    };
+
     const thumbnailUrl = episode.youtube
-        ? `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`
-        : episode.image || "/images/podcast/podcast-cover.jpg";
+        ? getYoutubeThumbnail(episode.youtube)
+        : episode.image || "/images/podcast-cover.jpg";
 
     return (
         <article className="min-h-screen bg-background">
@@ -77,6 +87,8 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                                 className="object-cover"
                                 priority
                                 sizes="(max-width: 1024px) 100vw, 50vw"
+                                onError={() => setImageError(true)}
+                                unoptimized={thumbnailUrl.includes('youtube.com')}
                             />
                         </figure>
                     </div>
