@@ -123,13 +123,13 @@ export default function AboutPage() {
                                 </h2>
                                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                                     <p>
-                                        Henry Harrison of Dallas Texas is a dedicated entrepreneur who has founded and acquired over fifty companies across various sectors.
+                                        Henry Harrison of Dallas Texas is a dedicated entrepreneur who has founded and acquired over twelve companies across various sectors.
                                     </p>
                                     <p>
                                         Originally from Northern Virginia/Washington DC, Henry laid the groundwork for his future endeavors with a Bachelor's degree in Economics from Emory University. He later pursued further education, earning a Master's Degree in Business Administration (MBA) from Southern Methodist University (SMU).
                                     </p>
                                     <p>
-                                        From starting his first company at age 25 to becoming a successful repeat entrepreneur, Henry's journey is a testament to passion, perseverance, and a keen eye for opportunity. His entrepreneurial spirit led him on a journey that saw him found and acquire over fifty companies, spanning a wide array of industries, from Private Equity to Internet Marketing.
+                                        From starting his first company at age 25 to becoming a successful repeat entrepreneur, Henry's journey is a testament to passion, perseverance, and a keen eye for opportunity. His entrepreneurial spirit led him on a journey that saw him found and acquire over twelve companies, spanning a wide array of industries, from Private Equity to Internet Marketing.
                                     </p>
                                     <p>
                                         Henry has developed a niche in promoting environmentally friendly technologies, especially in the waste-to-energy sector. His expertise in this area allows him to contribute to businesses that seek to reduce environmental impact while maintaining profitability.
@@ -206,7 +206,7 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Building2 className="w-10 h-10 text-primary mb-6" />
-                            <h3 className="text-xl font-medium text-foreground mb-3">50+ Companies</h3>
+                            <h3 className="text-xl font-medium text-foreground mb-3">12+ Companies</h3>
                             <p className="text-muted-foreground">Founded and acquired companies across Private Equity, Internet Marketing, and more.</p>
                         </div>
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">

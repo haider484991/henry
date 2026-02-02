@@ -3,28 +3,37 @@ import { Metadata } from "next";
 // Site configuration
 export const siteConfig = {
     name: "Henry Harrison",
-    title: "Henry Harrison | Entrepreneur, Investor & Philanthropist | Dallas, Texas",
-    description: "Henry Harrison is a Dallas-based entrepreneur, investor, and philanthropist with over 30 years of experience in waste-to-energy, real estate, and technology. Host of the Henry Harrison Podcast featuring business leaders and innovators.",
+    title: "Henry Harrison | Entrepreneurs, Business & Finance Podcast | Dallas, Texas",
+    description: "The Entrepreneurs, Business & Finance Podcast hosted by Henry Harrison from Dallas, Texas. In-depth interviews with CEOs, founders, Shark Tank alumni, and business leaders sharing insights on entrepreneurship, growth strategies, AI, sales mastery, and financial decision-making.",
     url: "https://henryharrison.com",
-    ogImage: "https://henryharrison.com/images/og-image.jpg",
+    ogImage: "https://henryharrison.com/opengraph-image",
     locale: "en_US",
     type: "website",
     creator: "Henry Harrison",
     keywords: [
         "Henry Harrison",
-        "Dallas entrepreneur",
-        "Texas businessman",
-        "waste to energy",
-        "real estate investor",
-        "philanthropist",
-        "business podcast",
         "Henry Harrison Podcast",
-        "Dallas Texas",
-        "green energy",
-        "sustainable business",
-        "entrepreneurship",
-        "business leader",
-        "investor Dallas",
+        "Entrepreneurs Business Finance Podcast",
+        "business podcast",
+        "entrepreneurship podcast",
+        "Dallas entrepreneur",
+        "Dallas Texas podcast",
+        "Plano Texas",
+        "CEO interviews",
+        "founder interviews",
+        "Shark Tank alumni",
+        "business growth strategies",
+        "startup podcast",
+        "finance podcast",
+        "leadership podcast",
+        "AI in business",
+        "sales mastery",
+        "venture capital",
+        "private equity",
+        "business insights",
+        "entrepreneur interviews",
+        "Texas business",
+        "DFW entrepreneur",
     ],
     authors: [{ name: "Henry Harrison", url: "https://henryharrison.com" }],
     social: {
@@ -95,9 +104,12 @@ export const defaultMetadata: Metadata = {
         },
     },
     icons: {
-        icon: "/favicon.ico",
-        shortcut: "/favicon-16x16.png",
-        apple: "/apple-touch-icon.png",
+        icon: [
+            { url: "/icon", type: "image/png", sizes: "32x32" },
+            { url: "/favicon.svg", type: "image/svg+xml" },
+        ],
+        shortcut: "/icon",
+        apple: "/apple-icon",
     },
     manifest: "/site.webmanifest",
     alternates: {
@@ -176,7 +188,7 @@ export function generateEpisodeMetadata(episode: {
     season: number;
     episode: number;
 }): Metadata {
-    const url = `${siteConfig.url}/podcast/${episode.slug}`;
+    const url = `${siteConfig.url}/${episode.slug}`;
     const image = episode.youtube
         ? `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`
         : episode.image

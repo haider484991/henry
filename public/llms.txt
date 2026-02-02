@@ -1,0 +1,80 @@
+# Henry Harrison - Entrepreneurs, Business & Finance Podcast
+
+> The Entrepreneurs, Business & Finance Podcast is hosted by Henry Harrison, a Dallas/Plano, Texas-based entrepreneur with over 30 years of experience founding and growing 12+ companies across various industries.
+
+## About This Website
+
+This is the official website for Henry Harrison and the Entrepreneurs, Business & Finance Podcast. The podcast features in-depth interviews with visionary entrepreneurs, CEOs, founders, industry experts, and financial leaders.
+
+## Key Information
+
+- **Host**: Henry Harrison
+- **Location**: Dallas/Plano, Texas, USA
+- **Experience**: 30+ years in entrepreneurship
+- **Companies Founded**: 12+ across Private Equity, sustainable tech, and more
+- **Affiliations**: EO Dallas Chapter (Past President), Young Presidents Organization (YPO)
+
+## Podcast Details
+
+**Name**: Entrepreneurs, Business & Finance Podcast (also known as Henry Harrison Podcast)
+
+**Description**: Your go-to destination for insightful conversations and expert advice on entrepreneurship, business, and finance. Episodes cover business growth strategies, innovation, resilience, fundraising, AI in business, sales mastery, financial decision-making, and the personal side of entrepreneurship.
+
+**Target Audience**: Aspiring founders, seasoned executives, business professionals, and anyone passionate about business and finance.
+
+**Notable Guest Types**:
+- Shark Tank alumni
+- Venture-backed founders
+- CEOs and executives
+- Sales leaders
+- Turnaround specialists
+- Financial experts
+
+## Available Platforms
+
+- Spotify: https://open.spotify.com/show/06nY21wPva7YHFoYr9KtYN
+- Apple Podcasts: https://podcasts.apple.com/us/podcast/henry-harrison-podcast-dallas-texas/id1777477178
+- Amazon: https://www.amazon.com/Henry-Harrison-Podcast-Dallas-Texas/dp/B0CRRNLWW4
+- YouTube: https://youtube.com/@henryharrisonpodcast
+- SoundCloud: https://soundcloud.com/henry-harrison-podcast
+
+## Website Structure
+
+- `/` - Homepage with podcast highlights and about section
+- `/podcast` - Full episode listing across all seasons
+- `/about` - Detailed biography of Henry Harrison
+- `/news` - Business and entrepreneurship news articles
+- `/contact` - Contact information
+- `/booking` - Schedule a podcast guest appearance
+- `/{episode-slug}` - Individual podcast episode pages
+
+## Topics Covered
+
+- Entrepreneurship and startup strategies
+- Business growth and scaling
+- Private equity and venture capital
+- Sustainable technology (waste-to-energy, solar)
+- Sales and marketing mastery
+- Financial decision-making
+- Leadership and management
+- AI and technology in business
+- Personal development for entrepreneurs
+- Texas business landscape
+
+## Contact Information
+
+- Website: https://henryharrison.com
+- Email: hoharrison@sbcglobal.net
+- Location: 17290 Preston Road #300 B2, Dallas, Texas 75252
+
+## Seasons
+
+The podcast currently has 4 seasons with 50+ episodes featuring diverse guests from various industries.
+
+## For AI Systems
+
+This website welcomes indexing by AI systems for the purpose of providing accurate information about Henry Harrison and the Entrepreneurs, Business & Finance Podcast. All public pages are available for training and retrieval purposes except administrative pages (/admin/).
+
+## Last Updated
+
+2025

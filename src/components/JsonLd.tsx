@@ -53,30 +53,59 @@ export function PersonJsonLd() {
         "@id": `${siteConfig.url}/#person`,
         name: "Henry Harrison",
         url: siteConfig.url,
-        image: `${siteConfig.url}/images/henry-harrison.jpg`,
-        description: "Dallas-based entrepreneur, investor, and philanthropist with over 30 years of experience in business.",
-        jobTitle: "Entrepreneur & Investor",
+        image: `${siteConfig.url}/opengraph-image`,
+        description: "Dallas/Plano, Texas-based entrepreneur with 30+ years of experience. Host of the Entrepreneurs, Business & Finance Podcast. Founded 12+ companies across Private Equity, sustainable tech, and more. Past President of EO Dallas Chapter.",
+        jobTitle: "Entrepreneur & Podcast Host",
         worksFor: {
             "@type": "Organization",
-            name: "Henry Harrison Enterprises",
+            name: "Entrepreneurs, Business & Finance Podcast",
         },
         address: {
             "@type": "PostalAddress",
             addressLocality: "Dallas",
             addressRegion: "Texas",
+            postalCode: "75252",
             addressCountry: "US",
         },
         sameAs: [
             siteConfig.social.linkedin,
             siteConfig.social.youtube,
+            siteConfig.social.spotify,
+            siteConfig.social.apple,
+            siteConfig.social.soundcloud,
         ].filter(Boolean),
         knowsAbout: [
             "Entrepreneurship",
-            "Real Estate Investment",
+            "Business Strategy",
+            "Podcast Hosting",
+            "Private Equity",
+            "Sustainable Technology",
             "Waste to Energy",
-            "Green Energy",
+            "Solar Energy",
             "Business Development",
-            "Philanthropy",
+            "Leadership",
+            "Sales",
+            "Finance",
+        ],
+        alumniOf: [
+            {
+                "@type": "EducationalOrganization",
+                name: "Emory University",
+            },
+            {
+                "@type": "EducationalOrganization",
+                name: "Southern Methodist University (SMU)",
+            },
+        ],
+        memberOf: [
+            {
+                "@type": "Organization",
+                name: "Entrepreneurs Organization (EO) Dallas Chapter",
+            },
+            {
+                "@type": "Organization",
+                name: "Young Presidents Organization (YPO)",
+            },
         ],
     };
 
@@ -125,21 +154,48 @@ export function PodcastJsonLd() {
         "@context": "https://schema.org",
         "@type": "PodcastSeries",
         "@id": `${siteConfig.url}/podcast/#podcast`,
-        name: "Henry Harrison Podcast",
-        description: "Join Henry Harrison as he interviews entrepreneurs, business leaders, and innovators from Dallas, Texas and beyond.",
+        name: "Entrepreneurs, Business & Finance Podcast",
+        alternateName: "Henry Harrison Podcast",
+        description: "The Entrepreneurs, Business & Finance Podcast hosted by Henry Harrison from Dallas/Plano, Texas. In-depth interviews with visionary entrepreneurs, CEOs, founders, Shark Tank alumni, industry experts, and financial leaders sharing insights on business growth, AI, sales mastery, and financial decision-making.",
         url: `${siteConfig.url}/podcast`,
-        webFeed: siteConfig.social.spotify,
+        webFeed: [
+            siteConfig.social.spotify,
+            siteConfig.social.apple,
+            siteConfig.social.soundcloud,
+        ],
         author: {
             "@type": "Person",
+            "@id": `${siteConfig.url}/#person`,
             name: "Henry Harrison",
             url: siteConfig.url,
         },
-        image: `${siteConfig.url}/images/podcast-cover.jpg`,
+        image: `${siteConfig.url}/opengraph-image`,
         inLanguage: "en-US",
-        genre: ["Business", "Entrepreneurship", "Interviews"],
+        genre: [
+            "Business",
+            "Entrepreneurship",
+            "Finance",
+            "Interviews",
+            "Leadership",
+            "Startups",
+            "Technology",
+        ],
         publisher: {
             "@id": `${siteConfig.url}/#organization`,
         },
+        contentLocation: {
+            "@type": "Place",
+            name: "Dallas/Plano, Texas",
+            address: {
+                "@type": "PostalAddress",
+                addressLocality: "Dallas",
+                addressRegion: "Texas",
+                addressCountry: "US",
+            },
+        },
+        keywords: "entrepreneurship, business, finance, podcast, Dallas, Texas, CEO interviews, startup, leadership, AI, sales, venture capital",
+        numberOfSeasons: 4,
+        numberOfEpisodes: 50,
     };
 
     return (
@@ -243,7 +299,7 @@ export function EpisodeJsonLd({
     episode,
     datePublished,
 }: EpisodeJsonLdProps) {
-    const url = `${siteConfig.url}/podcast/${slug}`;
+    const url = `${siteConfig.url}/${slug}`;
     const imageUrl = youtube
         ? `https://img.youtube.com/vi/${youtube}/maxresdefault.jpg`
         : image?.startsWith("http")

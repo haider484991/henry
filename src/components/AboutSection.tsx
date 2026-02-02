@@ -13,24 +13,24 @@ if (typeof window !== 'undefined') {
 
 const highlights = [
     {
+        icon: Mic,
+        title: "In-Depth Interviews",
+        description: "Conversations with visionary entrepreneurs, CEOs, founders, industry experts, and financial leaders.",
+    },
+    {
         icon: Building2,
-        title: "50+ Companies",
-        description: "Founded and acquired across Private Equity, Internet Marketing, waste-to-energy, and solar energy sectors.",
+        title: "Real Business Insights",
+        description: "Topics covering growth strategies, innovation, fundraising, AI, sales mastery, and financial decision-making.",
     },
     {
         icon: Users,
-        title: "EO Past President",
-        description: "Past President of EO Dallas Chapter and active member of The Young Presidents Organization (YPO).",
+        title: "Notable Guests",
+        description: "From Shark Tank alumni and venture-backed founders to sales legends and turnaround specialists.",
     },
     {
         icon: Leaf,
-        title: "Sustainable Tech",
-        description: "Niche expertise in environmentally friendly technologies, especially waste-to-energy and solar energy.",
-    },
-    {
-        icon: Mic,
-        title: "Speaker & Host",
-        description: "Professional speaker, NLP Master Practitioner, and host of the Entrepreneurs, Business & Finance Podcast.",
+        title: "Available Everywhere",
+        description: "Listen on Spotify, Apple Podcasts, YouTube, Amazon, and more major podcast platforms.",
     },
 ];
 
@@ -131,9 +131,9 @@ export function AboutSection() {
                 <div className="about-header max-w-3xl mb-20">
                     <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">About</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-foreground leading-tight mb-6">
-                        A Seasoned Entrepreneur
+                        Entrepreneurs, Business
                         <br />
-                        <span className="text-muted-foreground">with Northern Virginia Roots</span>
+                        <span className="text-muted-foreground">& Finance Podcast</span>
                     </h2>
                 </div>
 
@@ -152,33 +152,33 @@ export function AboutSection() {
                         </div>
                         {/* Floating badge */}
                         <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 max-w-[200px]">
-                            <p className="text-3xl font-light mb-1">30+</p>
-                            <p className="text-xs uppercase tracking-wider opacity-70">Years of Experience</p>
+                            <p className="text-3xl font-light mb-1">50+</p>
+                            <p className="text-xs uppercase tracking-wider opacity-70">Episodes & Guests</p>
                         </div>
                     </div>
 
                     {/* Text Side */}
                     <div className="about-bio space-y-6 lg:pt-12">
                         <p className="text-xl md:text-2xl text-foreground leading-relaxed">
-                            Henry Harrison of Dallas Texas is a dedicated entrepreneur who has founded and acquired over fifty companies across various sectors.
+                            The Henry Harrison Entrepreneurs, Business & Finance Podcast is an engaging and insightful show hosted by Dallas, Texas-based entrepreneur Henry Harrison.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Originally from Northern Virginia/Washington DC, Henry laid the groundwork for his future endeavors with a Bachelor's degree in Economics from Emory University and later earned his MBA from Southern Methodist University (SMU).
+                            With over 30 years of hands-on experience starting and growing businesses across various industries, Henry brings real-world perspective to every conversation. The podcast serves as your go-to destination for in-depth interviews with visionary entrepreneurs, CEOs, founders, industry experts, and financial leaders.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            From starting his first company at age 25 to becoming a successful repeat entrepreneur, Henry's journey spans three decades of innovation in the Dallas/Fort Worth area. His entrepreneurial spirit led him to found and acquire companies spanning industries from Private Equity to Internet Marketing.
+                            Episodes dive into the raw realities of building and scaling companies—covering topics like business growth strategies, innovation, resilience through failures and comebacks, fundraising, AI&apos;s role in modern operations, sales mastery, financial decision-making, and the personal side of entrepreneurship.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Henry has developed a niche in promoting environmentally friendly technologies, especially in the waste-to-energy and solar energy sectors. His leadership extends to serving as a member and past President of the Entrepreneurs Organization (EO) Dallas Chapter and active participation in The Young Presidents Organization (YPO).
+                            Whether you&apos;re an aspiring founder, a seasoned executive, or simply passionate about business and finance, you&apos;ll find actionable insights, candid stories, and motivational lessons from guests who have been there—from Shark Tank alumni and venture-backed founders to sales legends and turnaround specialists.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            As a professional speaker and certified NLP Master Practitioner, Henry's passion is making the world a better place by starting and growing businesses along with helping other entrepreneurs succeed.
+                            Join Henry Harrison from Dallas/Plano, Texas, as he uncovers the strategies, challenges, and triumphs shaping today&apos;s business landscape. Subscribe now for your regular dose of real entrepreneurial talk!
                         </p>
                         <Link
-                            href="#contact"
+                            href="/podcast"
                             className="link-arrow text-foreground border-foreground/30 hover:border-foreground inline-flex"
                         >
-                            Get in touch
+                            Browse Episodes
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

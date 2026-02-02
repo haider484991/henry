@@ -34,7 +34,9 @@
       "Bash(node -e:*)",
       "Bash(node scripts/seed-categories.mjs:*)",
       "Bash(npx tsc:*)",
-      "Bash(Select-Object -First 40)"
+      "Bash(Select-Object -First 40)",
+      "Bash(ls -la \"C:\\\\Projects\\\\Web\\\\henry\\\\src\\\\app\\\\\\(main\\)\"\" | grep -E \"podcast)",
+      "Bash(season \")"
     ]
   }
 }

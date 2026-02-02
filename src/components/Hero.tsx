@@ -276,12 +276,12 @@ export function Hero() {
 
                     {/* Subtitle */}
                     <p className="hero-subtitle text-xl md:text-2xl text-white/50 font-light tracking-wide mb-8">
-                        Entrepreneur <span className="text-white/30 mx-3">—</span> Investor <span className="text-white/30 mx-3">—</span> Speaker
+                        Entrepreneur <span className="text-white/30 mx-3">—</span> Investor <span className="text-white/30 mx-3">—</span> Podcast Host
                     </p>
 
                     {/* Description */}
                     <p className="hero-description text-base md:text-lg text-white/40 leading-relaxed mb-14 max-w-2xl">
-                        A dedicated entrepreneur who has founded and acquired over fifty companies across various sectors. With three decades of innovation in Dallas/Fort Worth, Henry is passionate about making the world a better place through business.
+                        Host of the Entrepreneurs, Business & Finance Podcast. With 30+ years of hands-on experience starting and growing businesses, Henry brings real-world perspective to in-depth interviews with visionary entrepreneurs, CEOs, and financial leaders.
                     </p>
 
                     {/* CTAs */}
@@ -309,7 +309,7 @@ export function Hero() {
                     {/* Stats */}
                     <div className="flex flex-wrap gap-12 md:gap-16 pt-10 border-t border-white/10">
                         <div className="hero-stat">
-                            <p className="text-5xl md:text-6xl font-light text-white tracking-tight mb-2">50<span className="text-white/40">+</span></p>
+                            <p className="text-5xl md:text-6xl font-light text-white tracking-tight mb-2">12<span className="text-white/40">+</span></p>
                             <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Companies</p>
                         </div>
                         <div className="hero-stat">

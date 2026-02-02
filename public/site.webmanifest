@@ -1,0 +1,29 @@
+{
+  "name": "Henry Harrison - Entrepreneurs, Business & Finance Podcast",
+  "short_name": "Henry Harrison",
+  "description": "The Entrepreneurs, Business & Finance Podcast hosted by Henry Harrison from Dallas, Texas. In-depth interviews with CEOs, founders, and business leaders.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0B3E50",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "education", "news"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

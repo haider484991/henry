@@ -143,7 +143,6 @@ export function Navbar() {
         { name: "About", href: "/about", hasMegaMenu: true },
         { name: "Podcast", href: "/podcast", hasMegaMenu: true },
         { name: "News", href: "/news", hasMegaMenu: true },
-        { name: "Contact", href: "/contact", hasMegaMenu: false },
     ];
 
     return (
@@ -210,7 +209,7 @@ export function Navbar() {
 
                 {/* CTA Button */}
                 <Link
-                    href="/book"
+                    href="/contact"
                     className={cn(
                         "nav-item hidden lg:inline-flex items-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300 hover:gap-3",
                         isScrolled
@@ -219,7 +218,7 @@ export function Navbar() {
                     )}
                     onClick={closeMenus}
                 >
-                    Book a Meeting
+                    Contact
                     <ArrowRight className="w-4 h-4" />
                 </Link>
 
@@ -261,7 +260,7 @@ export function Navbar() {
                                         <div>
                                             <h3 className="text-2xl font-medium text-foreground mb-3">Henry Harrison</h3>
                                             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                                                A seasoned Dallas entrepreneur with 30+ years experience, founder of 50+ companies across Private Equity, sustainable tech, and more.
+                                                A seasoned Dallas entrepreneur with 30+ years experience, founder of 12+ companies across Private Equity, sustainable tech, and more.
                                             </p>
                                             <Link
                                                 href="/about"
@@ -284,7 +283,7 @@ export function Navbar() {
                                                 <Building2 className="w-5 h-5" />
                                             </div>
                                             <div>
-                                                <h5 className="font-medium text-foreground">50+ Companies</h5>
+                                                <h5 className="font-medium text-foreground">12+ Companies</h5>
                                                 <p className="text-sm text-muted-foreground">Private Equity & Business</p>
                                             </div>
                                         </div>
@@ -346,7 +345,7 @@ export function Navbar() {
                                         {latestEpisodes.map((ep) => (
                                             <Link
                                                 key={ep.slug}
-                                                href={`/podcast/${ep.slug}`}
+                                                href={`/${ep.slug}`}
                                                 className="flex items-center gap-4 p-3 -mx-3 hover:bg-gray-50 transition-colors group"
                                                 onClick={closeMenus}
                                             >
@@ -540,11 +539,11 @@ export function Navbar() {
                         </div>
 
                         <Link
-                            href="/book"
+                            href="/contact"
                             className="flex items-center justify-center gap-3 w-full px-6 py-4 bg-primary text-white font-medium"
                             onClick={closeMenus}
                         >
-                            Book a Meeting
+                            Contact
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

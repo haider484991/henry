@@ -123,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Episode pages
     const episodePages: MetadataRoute.Sitemap = (episodes || []).map((episode) => ({
-        url: `${baseUrl}/podcast/${episode.slug}`,
+        url: `${baseUrl}/${episode.slug}`,
         lastModified: new Date(episode.updated_at || episode.created_at),
         changeFrequency: "monthly" as const,
         priority: 0.8,

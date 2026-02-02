@@ -2,10 +2,10 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Henry Harrison - Entrepreneur, Investor & Philanthropist';
+export const alt = 'Henry Harrison - Entrepreneurs, Business & Finance Podcast';
 export const size = {
     width: 1200,
-    height: 600,
+    height: 630,
 };
 export const contentType = 'image/png';
 
@@ -22,12 +22,13 @@ export default async function TwitterImage() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     padding: '60px',
+                    position: 'relative',
                 }}
             >
-                {/* Logo */}
+                {/* Logo - HH Monogram */}
                 <svg
-                    width="180"
-                    height="180"
+                    width="120"
+                    height="120"
                     viewBox="0 0 512 512"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -56,17 +57,30 @@ export default async function TwitterImage() {
                     Henry Harrison
                 </div>
 
-                {/* Tagline */}
+                {/* Podcast Title */}
                 <div
                     style={{
                         display: 'flex',
-                        fontSize: 28,
-                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontSize: 32,
+                        fontWeight: 500,
+                        color: 'rgba(255, 255, 255, 0.9)',
                         marginTop: 16,
-                        letterSpacing: '0.05em',
+                        letterSpacing: '0.02em',
                     }}
                 >
-                    Entrepreneur • Investor • Philanthropist
+                    Entrepreneurs, Business & Finance Podcast
+                </div>
+
+                {/* Location */}
+                <div
+                    style={{
+                        display: 'flex',
+                        fontSize: 20,
+                        color: 'rgba(255, 255, 255, 0.5)',
+                        marginTop: 20,
+                    }}
+                >
+                    Dallas/Plano, Texas
                 </div>
             </div>
         ),

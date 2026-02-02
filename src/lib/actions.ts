@@ -187,7 +187,10 @@ export async function getEpisodeBySlug(slug: string) {
         .single();
 
     if (error) {
-        console.error('Error fetching episode:', error);
+        // PGRST116 = no rows returned, which is expected when slug doesn't exist
+        if (error.code !== 'PGRST116') {
+            console.error('Error fetching episode:', error);
+        }
         return null;
     }
 
@@ -336,7 +339,10 @@ export async function getArticleBySlug(slug: string) {
         .single();
 
     if (error) {
-        console.error('Error fetching article:', error);
+        // PGRST116 = no rows returned, which is expected when slug doesn't exist
+        if (error.code !== 'PGRST116') {
+            console.error('Error fetching article:', error);
+        }
         return null;
     }
 

@@ -233,7 +233,7 @@ export default function PodcastPage() {
                             {season.episodes.map((episode) => (
                                 <Link
                                     key={episode.slug}
-                                    href={`/podcast/${episode.slug}`}
+                                    href={`/${episode.slug}`}
                                     className="episode-card group block p-6 bg-white border border-border hover:border-primary/50 hover:shadow-lg transition-all"
                                 >
                                     <div className="flex items-start gap-4">

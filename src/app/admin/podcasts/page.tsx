@@ -205,7 +205,7 @@ export default function PodcastsAdminPage() {
                                 <td className="px-6 py-4">
                                     <div className="flex items-center justify-end gap-2">
                                         <Link
-                                            href={`/podcast/${episode.slug}`}
+                                            href={`/${episode.slug}`}
                                             target="_blank"
                                             className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
                                             title="View"
