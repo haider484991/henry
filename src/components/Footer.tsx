@@ -23,7 +23,7 @@ export function Footer() {
                         </p>
                         <div className="flex gap-3">
                             <a
-                                href="https://www.linkedin.com/in/henryharrisondallas/"
+                                href="https://www.linkedin.com/in/henry-harrison-dallas-texas/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"
@@ -31,13 +31,15 @@ export function Footer() {
                                 <Linkedin className="w-4 h-4" />
                             </a>
                             <a
-                                href="#"
+                                href="https://x.com/henrydeimel"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"
                             >
                                 <Twitter className="w-4 h-4" />
                             </a>
                             <a
-                                href="https://henryharrison.com/podcast/"
+                                href="https://www.youtube.com/@HenryHarrison-DallasTexas"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 border border-white/20 hover:border-white/40 hover:bg-white/5 flex items-center justify-center transition-all"

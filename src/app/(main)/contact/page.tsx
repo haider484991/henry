@@ -198,7 +198,7 @@ export default function ContactPage() {
                                     </h3>
                                     <div className="flex gap-3">
                                         <a
-                                            href="https://www.linkedin.com/in/henryharrisondallas/"
+                                            href="https://www.linkedin.com/in/henry-harrison-dallas-texas/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="w-12 h-12 bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center transition-colors"
@@ -206,7 +206,9 @@ export default function ContactPage() {
                                             <Linkedin className="w-5 h-5" />
                                         </a>
                                         <a
-                                            href="#"
+                                            href="https://x.com/henrydeimel"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="w-12 h-12 bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center transition-colors"
                                         >
                                             <Twitter className="w-5 h-5" />

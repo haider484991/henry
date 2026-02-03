@@ -86,7 +86,7 @@ const getThankYouEmailHTML = (firstName: string) => `
                                         </a>
                                     </td>
                                     <td style="padding: 0 8px;">
-                                        <a href="https://www.linkedin.com/in/henryharrisondallas/" style="display: inline-block; width: 40px; height: 40px; background-color: #0B3E50; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none; color: #ffffff; font-size: 14px;">
+                                        <a href="https://www.linkedin.com/in/henry-harrison-dallas-texas/" style="display: inline-block; width: 40px; height: 40px; background-color: #0B3E50; border-radius: 50%; text-align: center; line-height: 40px; text-decoration: none; color: #ffffff; font-size: 14px;">
                                             in
                                         </a>
                                     </td>
@@ -140,7 +140,7 @@ Visit our podcast: https://henryharrison.com/podcast
 
 Connect with us:
 - YouTube: https://www.youtube.com/@HenryHarrison-DallasTexas
-- LinkedIn: https://www.linkedin.com/in/henryharrisondallas/
+- LinkedIn: https://www.linkedin.com/in/henry-harrison-dallas-texas/
 - Spotify: https://open.spotify.com/show/06nY21wPva7YHFoYr9KtYN
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/henry-harrison-podcast-dallas-texas/id1777477178
 

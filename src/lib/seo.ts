@@ -37,8 +37,8 @@ export const siteConfig = {
     ],
     authors: [{ name: "Henry Harrison", url: "https://henryharrison.com" }],
     social: {
-        linkedin: "https://linkedin.com/in/henryharrison",
-        youtube: "https://youtube.com/@henryharrisonpodcast",
+        linkedin: "https://www.linkedin.com/in/henry-harrison-dallas-texas/",
+        youtube: "https://www.youtube.com/@HenryHarrison-DallasTexas",
         spotify: "https://open.spotify.com/show/06nY21wPva7YHFoYr9KtYN",
         apple: "https://podcasts.apple.com/us/podcast/henry-harrison-podcast-dallas-texas/id1777477178",
         soundcloud: "https://soundcloud.com/henry-harrison-podcast",

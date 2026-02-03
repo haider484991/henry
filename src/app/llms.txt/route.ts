@@ -61,7 +61,7 @@ ${episodesList}
 - Spotify: https://open.spotify.com/show/06nY21wPva7YHFoYr9KtYN
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/henry-harrison-podcast-dallas-texas/id1777477178
 - Amazon: https://www.amazon.com/Henry-Harrison-Podcast-Dallas-Texas/dp/B0CRRNLWW4
-- YouTube: https://youtube.com/@henryharrisonpodcast
+- YouTube: https://www.youtube.com/@HenryHarrison-DallasTexas
 - SoundCloud: https://soundcloud.com/henry-harrison-podcast
 
 ## Website Structure
