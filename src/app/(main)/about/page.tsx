@@ -102,11 +102,11 @@ export default function AboutPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
                         {/* Image */}
                         <div className="relative">
-                            <div className="aspect-[4/5] overflow-hidden">
+                            <div className="overflow-hidden bg-secondary/30">
                                 <img
                                     src="/Henry Harrison Dallas Texas (1).png"
                                     alt="Henry Harrison - Dallas Texas Entrepreneur"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-auto object-contain"
                                 />
                             </div>
                             <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 max-w-[200px]">

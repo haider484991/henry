@@ -141,11 +141,11 @@ export function AboutSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-24">
                     {/* Image Side */}
                     <div className="relative about-image-wrapper">
-                        <div className="about-image relative aspect-[4/5] overflow-hidden" style={{ clipPath: "inset(0)" }}>
+                        <div className="about-image relative overflow-hidden bg-secondary/30" style={{ clipPath: "inset(0)" }}>
                             <img
                                 src="/Henry Harrison Dallas Texas (1).png"
                                 alt="Henry Harrison - Dallas Texas Entrepreneur"
-                                className="w-full h-full object-cover scale-110"
+                                className="w-full h-auto object-contain"
                             />
                             {/* Decorative overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
