@@ -27,9 +27,16 @@ const getThankYouEmailHTML = (firstName: string) => `
             <td align="center" style="padding: 40px 20px;">
                 <table role="presentation" style="width: 100%; max-width: 600px; border-collapse: collapse; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);">
                     
-                    <!-- Header with gradient -->
+                    <!-- Header with gradient and logo -->
                     <tr>
                         <td style="background: linear-gradient(135deg, #0B3E50 0%, #164E63 100%); padding: 50px 40px; text-align: center;">
+                            <div style="display: inline-block; width: 60px; height: 60px; border: 3px solid #ffffff; border-radius: 8px; margin-bottom: 15px;">
+                                <table role="presentation" style="width: 100%; height: 100%;">
+                                    <tr>
+                                        <td align="center" valign="middle" style="color: #ffffff; font-size: 20px; font-weight: bold;">HH</td>
+                                    </tr>
+                                </table>
+                            </div>
                             <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: -0.5px;">
                                 Henry Harrison
                             </h1>
@@ -56,8 +63,8 @@ const getThankYouEmailHTML = (firstName: string) => `
                             <table role="presentation" style="margin: 30px 0;">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://henryharrison.com/podcast" style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #0B3E50 0%, #164E63 100%); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600; border-radius: 50px; letter-spacing: 0.5px;">
-                                            Listen to the Podcast →
+                                        <a href="https://henryharrison.com" style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #0B3E50 0%, #164E63 100%); color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600; border-radius: 50px; letter-spacing: 0.5px;">
+                                            Visit Our Website →
                                         </a>
                                     </td>
                                 </tr>
@@ -175,7 +182,7 @@ export async function POST(request: NextRequest) {
 
         // Email to Henry (notification)
         const notificationEmail = {
-            from: process.env.ZOHO_EMAIL,
+            from: `Henry Harrison <${process.env.ZOHO_EMAIL}>`,
             to: "podcast@henryharrison.com",
             replyTo: email,
             subject: subject || `New Contact Form Submission from ${firstName} ${lastName}`,
@@ -232,7 +239,7 @@ Sent from henryharrison.com contact form
 
         // Thank you email to the user
         const thankYouEmail = {
-            from: process.env.ZOHO_EMAIL,
+            from: `Henry Harrison <${process.env.ZOHO_EMAIL}>`,
             to: email,
             subject: `Thank You for Reaching Out, ${firstName}! 🎙️`,
             html: getThankYouEmailHTML(firstName),
