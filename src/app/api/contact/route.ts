@@ -241,9 +241,15 @@ Sent from henryharrison.com contact form
         const thankYouEmail = {
             from: `Henry Harrison <${process.env.ZOHO_EMAIL}>`,
             to: email,
-            subject: `Thank You for Reaching Out, ${firstName}! 🎙️`,
+            replyTo: "podcast@henryharrison.com",
+            subject: `Thank You for Reaching Out, ${firstName}!`,
             html: getThankYouEmailHTML(firstName),
             text: getThankYouEmailText(firstName),
+            headers: {
+                "X-Priority": "3",
+                "X-Mailer": "Henry Harrison Website",
+                "List-Unsubscribe": "<mailto:podcast@henryharrison.com?subject=Unsubscribe>",
+            },
         };
 
         // Send both emails
