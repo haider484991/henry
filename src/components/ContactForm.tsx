@@ -1,11 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, MapPin, Mail, Clock, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, MapPin, Mail, Clock, Linkedin, Twitter, Loader2, CheckCircle } from "lucide-react";
 
 // Register once
 if (typeof window !== 'undefined') {
@@ -14,8 +14,59 @@ if (typeof window !== 'undefined') {
 
 export function ContactForm() {
     const sectionRef = useRef<HTMLDivElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
+    });
 
-    useLayoutEffect(() => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus("idle");
+        setErrorMessage("");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSubmitStatus("success");
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    subject: "",
+                    message: "",
+                });
+            } else {
+                setSubmitStatus("error");
+                setErrorMessage(data.error || "Failed to send message");
+            }
+        } catch {
+            setSubmitStatus("error");
+            setErrorMessage("An error occurred. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    }; useLayoutEffect(() => {
         if (!sectionRef.current) return;
 
         const ctx = gsap.context(() => {
@@ -189,24 +240,43 @@ export function ContactForm() {
                     {/* Right Side - Form */}
                     <div className="contact-form">
                         <div className="bg-white/5 backdrop-blur-sm p-8 md:p-12">
-                            <form className="space-y-8">
+                            <form className="space-y-8" onSubmit={handleSubmit}>
+                                {submitStatus === "success" && (
+                                    <div className="flex items-center gap-2 p-4 bg-green-500/20 text-green-200 rounded-md border border-green-500/30">
+                                        <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                                        <p>Your message has been sent! We'll get back to you soon.</p>
+                                    </div>
+                                )}
+                                {submitStatus === "error" && (
+                                    <div className="p-4 bg-red-500/20 text-red-200 rounded-md border border-red-500/30">
+                                        <p>{errorMessage}</p>
+                                    </div>
+                                )}
                                 <div className="form-field grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-xs font-medium uppercase tracking-widest text-white/50">
-                                            First Name
+                                            First Name *
                                         </label>
                                         <Input
+                                            name="firstName"
+                                            value={formData.firstName}
+                                            onChange={handleInputChange}
                                             className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
                                             placeholder="John"
+                                            required
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-xs font-medium uppercase tracking-widest text-white/50">
-                                            Last Name
+                                            Last Name *
                                         </label>
                                         <Input
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleInputChange}
                                             className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
                                             placeholder="Doe"
+                                            required
                                         />
                                     </div>
                                 </div>
@@ -216,7 +286,10 @@ export function ContactForm() {
                                         Email *
                                     </label>
                                     <Input
+                                        name="email"
                                         type="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
                                         placeholder="john@example.com"
                                         required
@@ -228,6 +301,9 @@ export function ContactForm() {
                                         Subject
                                     </label>
                                     <Input
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleInputChange}
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
                                         placeholder="Business Inquiry"
                                     />
@@ -235,21 +311,35 @@ export function ContactForm() {
 
                                 <div className="form-field space-y-2">
                                     <label className="text-xs font-medium uppercase tracking-widest text-white/50">
-                                        Message
+                                        Message *
                                     </label>
                                     <Textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 min-h-[120px] text-white resize-none placeholder:text-white/30"
                                         placeholder="How can Henry help you?"
+                                        required
                                     />
                                 </div>
 
                                 <div className="form-field pt-4">
                                     <button
                                         type="submit"
-                                        className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0B3E50] font-medium hover:bg-white/90 transition-all duration-300"
+                                        disabled={isSubmitting}
+                                        className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0B3E50] font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        Send Message
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        {isSubmitting ? (
+                                            <>
+                                                Sending...
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                            </>
+                                        ) : (
+                                            <>
+                                                Send Message
+                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </>
+                                        )}
                                     </button>
                                 </div>
                             </form>
