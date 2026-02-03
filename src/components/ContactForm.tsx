@@ -140,8 +140,8 @@ export function ContactForm() {
                                     <h3 className="text-xs font-medium uppercase tracking-widest mb-2 text-white/50">
                                         Email
                                     </h3>
-                                    <a href="mailto:info@henryharrison.com" className="text-lg hover:text-white/80 transition-colors">
-                                        info@henryharrison.com
+                                    <a href="mailto:podcast@henryharrison.com" className="text-lg hover:text-white/80 transition-colors">
+                                        podcast@henryharrison.com
                                     </a>
                                 </div>
                             </div>

@@ -1,16 +1,71 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, MapPin, Mail, Clock, Phone, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, MapPin, Mail, Clock, Linkedin, Twitter, Loader2, CheckCircle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactPage() {
     const pageRef = useRef<HTMLDivElement>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus("idle");
+        setErrorMessage("");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSubmitStatus("success");
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    phone: "",
+                    subject: "",
+                    message: "",
+                });
+            } else {
+                setSubmitStatus("error");
+                setErrorMessage(data.error || "Failed to send message");
+            }
+        } catch {
+            setSubmitStatus("error");
+            setErrorMessage("An error occurred. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     useLayoutEffect(() => {
         if (!pageRef.current) return;
@@ -115,8 +170,8 @@ export default function ContactPage() {
                                         <h3 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-2">
                                             Email
                                         </h3>
-                                        <a href="mailto:info@henryharrison.com" className="text-lg text-foreground hover:text-primary transition-colors">
-                                            info@henryharrison.com
+                                        <a href="mailto:podcast@henryharrison.com" className="text-lg text-foreground hover:text-primary transition-colors">
+                                            podcast@henryharrison.com
                                         </a>
                                     </div>
                                 </div>
@@ -167,13 +222,27 @@ export default function ContactPage() {
                                 <h2 className="text-2xl font-medium text-foreground mb-8">
                                     Send a Message
                                 </h2>
-                                <form className="space-y-6">
+                                <form className="space-y-6" onSubmit={handleSubmit}>
+                                    {submitStatus === "success" && (
+                                        <div className="flex items-center gap-2 p-4 bg-green-100 text-green-800 rounded-md">
+                                            <CheckCircle className="w-5 h-5" />
+                                            <p>Your message has been sent successfully! We'll get back to you soon.</p>
+                                        </div>
+                                    )}
+                                    {submitStatus === "error" && (
+                                        <div className="p-4 bg-red-100 text-red-800 rounded-md">
+                                            <p>{errorMessage}</p>
+                                        </div>
+                                    )}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium text-muted-foreground">
                                                 First Name *
                                             </label>
                                             <Input
+                                                name="firstName"
+                                                value={formData.firstName}
+                                                onChange={handleInputChange}
                                                 className="bg-white border-border"
                                                 placeholder="John"
                                                 required
@@ -184,6 +253,9 @@ export default function ContactPage() {
                                                 Last Name *
                                             </label>
                                             <Input
+                                                name="lastName"
+                                                value={formData.lastName}
+                                                onChange={handleInputChange}
                                                 className="bg-white border-border"
                                                 placeholder="Doe"
                                                 required
@@ -196,7 +268,10 @@ export default function ContactPage() {
                                             Email *
                                         </label>
                                         <Input
+                                            name="email"
                                             type="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
                                             className="bg-white border-border"
                                             placeholder="john@example.com"
                                             required
@@ -208,7 +283,10 @@ export default function ContactPage() {
                                             Phone
                                         </label>
                                         <Input
+                                            name="phone"
                                             type="tel"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
                                             className="bg-white border-border"
                                             placeholder="(555) 123-4567"
                                         />
@@ -219,6 +297,9 @@ export default function ContactPage() {
                                             Subject
                                         </label>
                                         <Input
+                                            name="subject"
+                                            value={formData.subject}
+                                            onChange={handleInputChange}
                                             className="bg-white border-border"
                                             placeholder="Business Inquiry"
                                         />
@@ -229,6 +310,9 @@ export default function ContactPage() {
                                             Message *
                                         </label>
                                         <Textarea
+                                            name="message"
+                                            value={formData.message}
+                                            onChange={handleInputChange}
                                             className="bg-white border-border min-h-[150px] resize-none"
                                             placeholder="How can Henry help you?"
                                             required
@@ -237,10 +321,20 @@ export default function ContactPage() {
 
                                     <button
                                         type="submit"
-                                        className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                                        disabled={isSubmitting}
+                                        className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        Send Message
-                                        <ArrowRight className="w-4 h-4" />
+                                        {isSubmitting ? (
+                                            <>
+                                                Sending...
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                            </>
+                                        ) : (
+                                            <>
+                                                Send Message
+                                                <ArrowRight className="w-4 h-4" />
+                                            </>
+                                        )}
                                     </button>
                                 </form>
                             </div>
