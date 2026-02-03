@@ -251,7 +251,7 @@ export function Navbar() {
                                     <div className="flex gap-8">
                                         <div className="w-48 h-60 relative overflow-hidden flex-shrink-0">
                                             <Image
-                                                src="https://henryharrison.com/wp-content/uploads/2024/06/henry-harrison-dallas-linkedin-profile.png"
+                                                src="/Henry Harrison Dallas Texas (1).png"
                                                 alt="Henry Harrison"
                                                 fill
                                                 className="object-cover"
@@ -377,15 +377,15 @@ export function Navbar() {
                                         {seasons
                                             .sort((a, b) => b.number - a.number)
                                             .map((season) => (
-                                            <Link
-                                                key={season.id}
-                                                href={`/podcast?season=${season.number}`}
-                                                className="flex items-center justify-between py-3 border-b border-gray-100 hover:bg-gray-50 -mx-3 px-3 transition-colors group"
-                                                onClick={closeMenus}
-                                            >
-                                                <span className="font-medium text-foreground group-hover:text-primary transition-colors">{season.title || `Season ${season.number}`}</span>
-                                            </Link>
-                                        ))}
+                                                <Link
+                                                    key={season.id}
+                                                    href={`/podcast?season=${season.number}`}
+                                                    className="flex items-center justify-between py-3 border-b border-gray-100 hover:bg-gray-50 -mx-3 px-3 transition-colors group"
+                                                    onClick={closeMenus}
+                                                >
+                                                    <span className="font-medium text-foreground group-hover:text-primary transition-colors">{season.title || `Season ${season.number}`}</span>
+                                                </Link>
+                                            ))}
                                     </div>
                                 </div>
 

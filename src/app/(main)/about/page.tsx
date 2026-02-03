@@ -104,7 +104,7 @@ export default function AboutPage() {
                         <div className="relative">
                             <div className="aspect-[4/5] overflow-hidden">
                                 <img
-                                    src="https://henryharrison.com/wp-content/uploads/2024/06/henry-harrison-dallas-linkedin-profile.png"
+                                    src="/Henry Harrison Dallas Texas (1).png"
                                     alt="Henry Harrison - Dallas Texas Entrepreneur"
                                     className="w-full h-full object-cover"
                                 />

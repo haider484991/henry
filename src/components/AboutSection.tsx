@@ -143,7 +143,7 @@ export function AboutSection() {
                     <div className="relative about-image-wrapper">
                         <div className="about-image relative aspect-[4/5] overflow-hidden" style={{ clipPath: "inset(0)" }}>
                             <img
-                                src="https://henryharrison.com/wp-content/uploads/2024/06/henry-harrison-dallas-linkedin-profile.png"
+                                src="/Henry Harrison Dallas Texas (1).png"
                                 alt="Henry Harrison - Dallas Texas Entrepreneur"
                                 className="w-full h-full object-cover scale-110"
                             />
