@@ -71,7 +71,7 @@ ${episodesList}
 - \`/about\` - Detailed biography of Henry Harrison
 - \`/news\` - Business and entrepreneurship news articles
 - \`/contact\` - Contact information
-- \`/booking\` - Schedule a podcast guest appearance
+- \`/book\` - Schedule a podcast guest appearance
 - \`/{episode-slug}\` - Individual podcast episode pages
 
 ## Topics Covered
