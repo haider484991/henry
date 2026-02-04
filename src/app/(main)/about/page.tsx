@@ -126,13 +126,25 @@ export default function AboutPage() {
                                         Henry Harrison of Dallas Texas is a dedicated entrepreneur who has founded and acquired over twelve companies across various sectors.
                                     </p>
                                     <p>
-                                        Originally from Northern Virginia/Washington DC, Henry laid the groundwork for his future endeavors with a Bachelor's degree in Economics from Emory University. He later pursued further education, earning a Master's Degree in Business Administration (MBA) from Southern Methodist University (SMU).
+                                        Originally from Northern Virginia/Washington DC, Henry laid the groundwork for his future endeavors with a Bachelor&apos;s degree in Economics from Emory University. He later pursued further education, earning a Master&apos;s Degree in Business Administration (MBA) from Southern Methodist University (SMU).
                                     </p>
                                     <p>
-                                        From starting his first company at age 25 to becoming a successful repeat entrepreneur, Henry's journey is a testament to passion, perseverance, and a keen eye for opportunity. His entrepreneurial spirit led him on a journey that saw him found and acquire over twelve companies, spanning a wide array of industries, from Private Equity to Internet Marketing.
+                                        From starting his first company at age 25 to becoming a successful repeat entrepreneur, Henry&apos;s journey is a testament to passion, perseverance, and a keen eye for opportunity. His entrepreneurial spirit led him on a journey that saw him found and acquire over twelve companies.
                                     </p>
                                     <p>
-                                        Henry has developed a niche in promoting environmentally friendly technologies, especially in the waste-to-energy sector. His expertise in this area allows him to contribute to businesses that seek to reduce environmental impact while maintaining profitability.
+                                        Henry (in some cases with Olga, his wife of 25 years) has started and acquired over twelve companies (Including over 50 corporate entities) across a variety of industries including Private Equity, Venture Capital, Securities, Oil and Gas, Mining, Staffing, Commercial Cleaning, Homebuilding, General Contracting, Internet Marketing, securing Debt Financing for other companies and Waste to Energy.
+                                    </p>
+                                    <p>
+                                        Henry was a strategic advisor for a solar company, which he believes will change the paradigm of solar energy efficiency worldwide. He has been a paid traveling public speaker and a consultant. Henry is a member and Past President of the Entrepreneurs Organization (EO)-Dallas Chapter as well as a past member of The Young Presidents Organization (YPO).
+                                    </p>
+                                    <p>
+                                        He is a member of various alumni and business organizations. He is a certified NLP Master Practitioner, worked as a trainer at an NLP center for over 5 years, and has been a paid professional motivational and business speaker. Henry has experienced the ups and downs of entrepreneurship, including tangles with the government and government regulations.
+                                    </p>
+                                    <p>
+                                        Henry&apos;s passion is making the world a better place by starting and growing businesses along with helping other entrepreneurs start and grow businesses. More recently, Henry is most excited about environmentally friendly technologies.
+                                    </p>
+                                    <p>
+                                        Henry enjoys Working Out, Hiking, Golfing, Skiing, and Tennis. He is a member of the Washington Golf and Country Club in Arlington, Virginia, and a member of Lifetime Fitness.
                                     </p>
                                 </div>
                             </div>
