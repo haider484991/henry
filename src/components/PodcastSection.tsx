@@ -309,7 +309,6 @@ export function PodcastSection() {
                     {[
                         { value: `${seasons.length}`, label: "Seasons" },
                         { value: "50+", label: "Episodes" },
-                        { value: "50+", label: "Guests" },
                         { value: "50000+", label: "Listeners" },
                     ].map((stat, index) => (
                         <div key={index} className="text-center">

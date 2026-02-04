@@ -25,7 +25,7 @@ const highlights = [
     {
         icon: Users,
         title: "Notable Guests",
-        description: "From Shark Tank alumni and venture-backed founders to sales legends and turnaround specialists.",
+        description: "From Shark Tank alumni and venture-backed founders to sales legends and senior entrepreneurs.",
     },
     {
         icon: Leaf,
@@ -169,7 +169,7 @@ export function AboutSection() {
                             Episodes dive into the raw realities of building and scaling companies—covering topics like business growth strategies, innovation, resilience through failures and comebacks, fundraising, AI&apos;s role in modern operations, sales mastery, financial decision-making, and the personal side of entrepreneurship.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Whether you&apos;re an aspiring founder, a seasoned executive, or simply passionate about business and finance, you&apos;ll find actionable insights, candid stories, and motivational lessons from guests who have been there—from Shark Tank alumni and venture-backed founders to sales legends and turnaround specialists.
+                            Whether you&apos;re an aspiring founder, a seasoned executive, or simply passionate about business and finance, you&apos;ll find actionable insights, candid stories, and motivational lessons from guests who have been there—from Shark Tank alumni and venture-backed founders to sales legends and senior entrepreneurs.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             Join Henry Harrison from Dallas/Plano, Texas, as he uncovers the strategies, challenges, and triumphs shaping today&apos;s business landscape. Subscribe now for your regular dose of real entrepreneurial talk!
