@@ -307,10 +307,10 @@ export function PodcastSection() {
                 {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-white/10">
                     {[
-                        { value: "4", label: "Seasons" },
-                        { value: `${allEpisodes.length}+`, label: "Episodes" },
+                        { value: `${seasons.length}`, label: "Seasons" },
+                        { value: "50+", label: "Episodes" },
                         { value: "50+", label: "Guests" },
-                        { value: "1000+", label: "Listeners" },
+                        { value: "50000+", label: "Listeners" },
                     ].map((stat, index) => (
                         <div key={index} className="text-center">
                             <div className="text-5xl md:text-6xl font-medium mb-3">{stat.value}</div>
