@@ -157,7 +157,7 @@ export default function PodcastPage() {
                             Entrepreneurs, Business & Finance Podcast
                         </h1>
                         <p className="text-xl opacity-80 leading-relaxed max-w-2xl mb-8">
-                            Your go-to destination for insightful conversations and expert advice on all things related to entrepreneurship, business, and finance. Henry and his guests dive deep into business strategies, investment opportunities, market trends, and personal development.
+                            Your terrific destination for insightful conversations and expert advice on all things related to entrepreneurship, business, and finance. Henry and his guests dive deep into business strategies, investment opportunities, market trends, and personal development.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             {platforms.map((platform) => (
