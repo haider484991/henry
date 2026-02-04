@@ -142,7 +142,6 @@ export function Navbar() {
         { name: "Home", href: "/", hasMegaMenu: false },
         { name: "About", href: "/about", hasMegaMenu: true },
         { name: "Podcast", href: "/podcast", hasMegaMenu: true },
-        { name: "News", href: "/news", hasMegaMenu: true },
     ];
 
     return (

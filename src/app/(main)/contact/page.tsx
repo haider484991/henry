@@ -130,7 +130,7 @@ export default function ContactPage() {
                             Get in Touch
                         </h1>
                         <p className="text-xl opacity-80 leading-relaxed max-w-2xl">
-                            Have a question, want to discuss business opportunities, or interested in being a guest on the podcast? Reach out and let's connect.
+                            Are you interested in being a guest on the podcast? Reach out and let's connect.
                         </p>
                     </div>
                 </div>

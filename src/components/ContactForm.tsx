@@ -21,6 +21,7 @@ export function ContactForm() {
         firstName: "",
         lastName: "",
         email: "",
+        phone: "",
         subject: "",
         message: "",
     });
@@ -53,6 +54,7 @@ export function ContactForm() {
                     firstName: "",
                     lastName: "",
                     email: "",
+                    phone: "",
                     subject: "",
                     message: "",
                 });
@@ -163,7 +165,7 @@ export function ContactForm() {
                             Conversation
                         </h2>
                         <p className="text-white/60 text-lg leading-relaxed mb-12 max-w-md">
-                            Have a question, want to discuss business opportunities, or interested in being a guest on the podcast? Reach out and let's connect.
+                            Are you interested in being a guest on the podcast? Reach out and let's connect.
                         </p>
 
                         <div className="space-y-8">
@@ -295,6 +297,20 @@ export function ContactForm() {
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
                                         placeholder="john@example.com"
                                         required
+                                    />
+                                </div>
+
+                                <div className="form-field space-y-2">
+                                    <label className="text-xs font-medium uppercase tracking-widest text-white/50">
+                                        Phone
+                                    </label>
+                                    <Input
+                                        name="phone"
+                                        type="tel"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
+                                        placeholder="(555) 123-4567"
                                     />
                                 </div>
 
