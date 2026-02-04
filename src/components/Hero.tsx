@@ -276,7 +276,7 @@ export function Hero() {
 
                     {/* Subtitle */}
                     <p className="hero-subtitle text-xl md:text-2xl text-white/50 font-light tracking-wide mb-8">
-                        Entrepreneur <span className="text-white/30 mx-3">—</span> Investor <span className="text-white/30 mx-3">—</span> Podcast Host
+                        Entrepreneurs, Business & Finance
                     </p>
 
                     {/* Description */}

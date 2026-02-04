@@ -163,7 +163,7 @@ export function AboutSection() {
                             The Henry Harrison Entrepreneurs, Business & Finance Podcast is an engaging and insightful show hosted by Dallas, Texas-based entrepreneur Henry Harrison.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            With over 30 years of hands-on experience starting and growing businesses across various industries, Henry brings real-world perspective to every conversation. The podcast serves as your go-to destination for in-depth interviews with visionary entrepreneurs, CEOs, founders, industry experts, and financial leaders.
+                            With over 30 years of hands-on experience starting and growing businesses across various industries, Henry brings real-world perspective to every conversation. The podcast serves as your terrific destination for in-depth interviews with visionary entrepreneurs, CEOs, founders, industry experts, and financial leaders.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             Episodes dive into the raw realities of building and scaling companies—covering topics like business growth strategies, innovation, resilience through failures and comebacks, fundraising, AI&apos;s role in modern operations, sales mastery, financial decision-making, and the personal side of entrepreneurship.
