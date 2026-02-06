@@ -19,7 +19,7 @@ export function Footer() {
                             </span>
                         </div>
                         <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
-                            Dallas, Texas entrepreneur with over 30 years of experience building businesses and helping entrepreneurs succeed. Passionate about sustainable technologies.
+                            Dallas, Texas entrepreneur with over 30 years of experience building businesses and helping entrepreneurs succeed.
                         </p>
                         <div className="flex gap-3">
                             <a
