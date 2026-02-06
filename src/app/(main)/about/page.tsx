@@ -202,7 +202,7 @@ export default function AboutPage() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-medium text-foreground mb-2">YPO Member</h3>
-                                <p className="text-muted-foreground">Active participation in The Young Presidents Organization (YPO)</p>
+                                <p className="text-muted-foreground">Prior member of The Young Presidents Organization (YPO)</p>
                             </div>
                         </div>
                     </div>
