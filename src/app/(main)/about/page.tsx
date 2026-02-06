@@ -243,7 +243,7 @@ export default function AboutPage() {
                             Leadership & Impact
                         </h2>
                         <p className="text-lg opacity-80 leading-relaxed mb-8">
-                            Beyond his entrepreneurial pursuits, Henry has served as a strategic advisor, notably contributing to a solar energy company with aspirations to revolutionize global solar efficiency. His leadership acumen shines through his roles as a member and past President of the Entrepreneurs Organization (EO) Dallas Chapter and active participation in The Young Presidents Organization (YPO).
+                            Beyond his entrepreneurial pursuits, Henry has served as a strategic advisor, notably contributing to a solar energy company with aspirations to revolutionize global solar efficiency. His leadership acumen shines through his roles as a member and past President of the Entrepreneurs Organization (EO) Dallas Chapter and prior member of The Young Presidents Organization (YPO).
                         </p>
                         <p className="text-lg opacity-80 leading-relaxed mb-12">
                             As a professional speaker and certified NLP Master Practitioner, Henry's passion is making the world a better place by starting and growing businesses along with helping other entrepreneurs succeed.
