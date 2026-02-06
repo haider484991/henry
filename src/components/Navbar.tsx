@@ -259,7 +259,7 @@ export function Navbar() {
                                         <div>
                                             <h3 className="text-2xl font-medium text-foreground mb-3">Henry Harrison</h3>
                                             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                                                A seasoned Dallas entrepreneur with 30+ years experience, founder of 12+ companies across Private Equity, sustainable tech, and more.
+                                                A seasoned Dallas entrepreneur with 30+ years of experience, founder of 12+ companies across multiple business sectors.
                                             </p>
                                             <Link
                                                 href="/about"
@@ -283,7 +283,7 @@ export function Navbar() {
                                             </div>
                                             <div>
                                                 <h5 className="font-medium text-foreground">12+ Companies</h5>
-                                                <p className="text-sm text-muted-foreground">Private Equity & Business</p>
+                                                <p className="text-sm text-muted-foreground">Multiple Business Sectors</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-4 group">
@@ -292,7 +292,7 @@ export function Navbar() {
                                             </div>
                                             <div>
                                                 <h5 className="font-medium text-foreground">Sustainable Tech</h5>
-                                                <p className="text-sm text-muted-foreground">Solar & Waste-to-Energy</p>
+                                                <p className="text-sm text-muted-foreground">Waste-to-Energy</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-4 group">
@@ -317,7 +317,7 @@ export function Navbar() {
                                         </div>
                                         <div className="flex items-center gap-3 text-sm">
                                             <Mail className="w-4 h-4 text-primary" />
-                                            <span className="text-muted-foreground">info@henryharrison.com</span>
+                                            <span className="text-muted-foreground">podcast@henryharrison.com</span>
                                         </div>
                                     </div>
                                     <Link
