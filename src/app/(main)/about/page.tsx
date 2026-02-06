@@ -219,12 +219,12 @@ export default function AboutPage() {
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Building2 className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-medium text-foreground mb-3">12+ Companies</h3>
-                            <p className="text-muted-foreground">Founded and acquired companies across Private Equity, Internet Marketing, and more.</p>
+                            <p className="text-muted-foreground">Founded and acquired companies across multiple business sectors.</p>
                         </div>
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Leaf className="w-10 h-10 text-primary mb-6" />
                             <h3 className="text-xl font-medium text-foreground mb-3">Sustainable Tech</h3>
-                            <p className="text-muted-foreground">Specializing in waste-to-energy and solar energy technologies for environmental impact.</p>
+                            <p className="text-muted-foreground">Specializing in waste-to-energy and advanced renewable technologies for environmental impact.</p>
                         </div>
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Mic className="w-10 h-10 text-primary mb-6" />
