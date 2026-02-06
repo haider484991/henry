@@ -323,7 +323,7 @@ export function ContactForm() {
                                         value={formData.subject}
                                         onChange={handleInputChange}
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 text-white placeholder:text-white/30"
-                                        placeholder="Business Inquiry"
+                                        placeholder="Podcast Inquiry"
                                     />
                                 </div>
 
@@ -336,7 +336,7 @@ export function ContactForm() {
                                         value={formData.message}
                                         onChange={handleInputChange}
                                         className="bg-transparent border-0 border-b border-white/20 rounded-none px-0 focus-visible:ring-0 focus-visible:border-white text-lg py-3 min-h-[120px] text-white resize-none placeholder:text-white/30"
-                                        placeholder="How can Henry help you?"
+                                        placeholder="Tell us about yourself/your business"
                                         required
                                     />
                                 </div>

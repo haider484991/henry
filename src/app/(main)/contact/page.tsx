@@ -303,7 +303,7 @@ export default function ContactPage() {
                                             value={formData.subject}
                                             onChange={handleInputChange}
                                             className="bg-white border-border"
-                                            placeholder="Business Inquiry"
+                                            placeholder="Podcast Inquiry"
                                         />
                                     </div>
 
@@ -316,7 +316,7 @@ export default function ContactPage() {
                                             value={formData.message}
                                             onChange={handleInputChange}
                                             className="bg-white border-border min-h-[150px] resize-none"
-                                            placeholder="How can Henry help you?"
+                                            placeholder="Tell us about yourself/your business"
                                             required
                                         />
                                     </div>
