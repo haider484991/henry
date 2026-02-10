@@ -222,8 +222,8 @@ export default function AboutPage() {
                         </div>
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Leaf className="w-10 h-10 text-primary mb-6" />
-                            <h3 className="text-xl font-medium text-foreground mb-3">Sustainable Tech</h3>
-                            <p className="text-muted-foreground">Specializing in waste-to-energy and advanced renewable technologies for environmental impact.</p>
+                            <h3 className="text-xl font-medium text-foreground mb-3">Sustainable Businesses</h3>
+                            <p className="text-muted-foreground">Specializing in Waste-to-Energy Businesses and advanced renewable technologies for environmental impact.</p>
                         </div>
                         <div className="achievement-card p-8 bg-secondary/50 hover:bg-secondary transition-colors">
                             <Mic className="w-10 h-10 text-primary mb-6" />
