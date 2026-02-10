@@ -317,8 +317,8 @@ export function Hero() {
                             <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Years</p>
                         </div>
                         <div className="hero-stat">
-                            <p className="text-5xl md:text-6xl font-light text-white tracking-tight mb-2">EO</p>
-                            <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Member</p>
+                            <p className="text-5xl md:text-6xl font-light text-white tracking-tight mb-2">12<span className="text-white/40">+</span></p>
+                            <p className="text-xs text-white/40 uppercase tracking-[0.2em]">Business Sectors</p>
                         </div>
                     </div>
                 </div>
