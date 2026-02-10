@@ -259,7 +259,7 @@ export function Navbar() {
                                         <div>
                                             <h3 className="text-2xl font-medium text-foreground mb-3">Henry Harrison</h3>
                                             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                                                A seasoned Dallas entrepreneur with 30+ years of experience, founder of 12+ companies across multiple business sectors.
+                                                A seasoned Dallas entrepreneur with 30+ years of experience with 12+ companies across multiple business sectors.
                                             </p>
                                             <Link
                                                 href="/about"

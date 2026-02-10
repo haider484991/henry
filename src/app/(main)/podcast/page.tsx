@@ -200,7 +200,7 @@ export default function PodcastPage() {
                                 </h2>
                                 <p className="text-lg text-primary font-medium mb-4">From Dallas TX</p>
                                 <p className="text-muted-foreground leading-relaxed">
-                                    This season, we&apos;re diving deeper into entrepreneurs, business strategies, and the world of finance. Join me as we explore the stories behind successful business people and finance experts, dissecting the challenges, triumphs, and strategies that shape their journey.
+                                    We&apos;re diving deeper into entrepreneurship, business strategies, and the world of finance. Join me as we explore the stories behind successful business people and finance experts, dissecting the challenges, triumphs, and strategies that shape their journey.
                                 </p>
                             </div>
 
