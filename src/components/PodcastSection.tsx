@@ -162,7 +162,7 @@ export function PodcastSection() {
                         <span className="text-white/60">& Finance Podcast</span>
                     </h2>
                     <p className="text-lg text-white/60 leading-relaxed max-w-2xl mb-10">
-                        Your terrific destination for insightful conversations and expert advice on all things related to entrepreneurship, business, and finance.
+                        A terrific destination for insightful conversations and expert advice on all things related to entrepreneurship, business, and finance.
                     </p>
 
                     {/* Podcast Platforms */}

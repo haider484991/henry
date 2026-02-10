@@ -38,7 +38,7 @@ This is the official website for Henry Harrison and the Entrepreneurs, Business 
 
 **Name**: Entrepreneurs, Business & Finance Podcast (also known as Henry Harrison Podcast)
 
-**Description**: Your terrific destination for insightful conversations and expert advice on entrepreneurship, business, and finance. Episodes cover business growth strategies, innovation, resilience, fundraising, AI in business, sales mastery, financial decision-making, and the personal side of entrepreneurship.
+**Description**: A terrific destination for insightful conversations and expert advice on entrepreneurship, business, and finance. Episodes cover business growth strategies, innovation, resilience, fundraising, AI in business, sales mastery, financial decision-making, and the personal side of entrepreneurship.
 
 **Current Seasons**: 4 seasons with 50+ episodes
 
