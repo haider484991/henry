@@ -140,7 +140,7 @@ export default function AboutPage() {
                                         He is a member of various alumni and business organizations. He is a certified NLP Master Practitioner, worked as a trainer at an NLP center for over 5 years, and has been a paid professional motivational and business speaker. Henry has experienced the ups and downs of entrepreneurship, including tangles with the government and government regulations.
                                     </p>
                                     <p>
-                                        Henry&apos;s passion is making the world a better place by starting and growing businesses along with helping other entrepreneurs start and grow businesses. More recently, Henry is most excited about environmentally friendly technologies.
+                                        Henry&apos;s passion is making the world a better place by starting and growing businesses along with helping other entrepreneurs start and grow businesses. More recently, Henry is excited about environmentally friendly businesses and technologies.
                                     </p>
                                     <p>
                                         Henry enjoys Working Out, Hiking, Golfing, Skiing, and Tennis. He is a member of the Washington Golf and Country Club in Arlington, Virginia, and a member of Lifetime Fitness.
