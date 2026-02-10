@@ -90,8 +90,7 @@ export default function AboutPage() {
                             Henry Harrison
                         </h1>
                         <p className="text-xl md:text-2xl opacity-80 leading-relaxed max-w-2xl">
-                            A seasoned entrepreneur with over 30 years of experience, from Northern Virginia roots to Dallas, Texas endeavors, spanning diverse industries with a passion for sustainable technologies.
-                        </p>
+                            A seasoned entrepreneur with over 30 year of experience, (from Northern Virginia roots to Dallas Texas endeavors), spanning diverse industries with a passion for sustainable Businesses.                        </p>
                     </div>
                 </div>
             </section>
