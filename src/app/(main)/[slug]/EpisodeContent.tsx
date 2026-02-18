@@ -181,6 +181,15 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                                 <h2 className="text-2xl font-medium text-foreground">Episode Transcript</h2>
                             </div>
                             <div className="bg-white rounded-lg border border-border overflow-hidden">
+                                <div className="px-8 py-4 border-b border-border">
+                                    <button
+                                        onClick={() => setTranscriptOpen(!transcriptOpen)}
+                                        className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+                                    >
+                                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${transcriptOpen ? 'rotate-180' : ''}`} />
+                                        {transcriptOpen ? 'Collapse Transcript' : 'Read Full Transcript'}
+                                    </button>
+                                </div>
                                 <div
                                     className={`relative ${transcriptOpen ? '' : 'max-h-48 overflow-hidden'}`}
                                 >
@@ -196,15 +205,6 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                                     {!transcriptOpen && (
                                         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
                                     )}
-                                </div>
-                                <div className="px-8 py-4 border-t border-border">
-                                    <button
-                                        onClick={() => setTranscriptOpen(!transcriptOpen)}
-                                        className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
-                                    >
-                                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${transcriptOpen ? 'rotate-180' : ''}`} />
-                                        {transcriptOpen ? 'Collapse Transcript' : 'Read Full Transcript'}
-                                    </button>
                                 </div>
                             </div>
                         </div>
