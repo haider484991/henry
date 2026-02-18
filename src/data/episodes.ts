@@ -1,9 +1,13 @@
+export interface GuestLink {
+    url: string;
+    label: string;
+}
+
 export interface GuestContact {
     phone?: string;
     email?: string;
     address?: string;
-    website?: string;
-    websiteLabel?: string;
+    links?: GuestLink[];
 }
 
 export interface Episode {
@@ -50,8 +54,7 @@ export const episodes: Episode[] = [
             phone: "702-649-3495",
             email: "flightclub@theofficesquad.com",
             address: "10501 West Gowan Road, Suite 260, Las Vegas, NV 89129",
-            website: "https://www.theofficesquad.com/",
-            websiteLabel: "Visit TheOfficeSquad"
+            links: [{ url: "https://www.theofficesquad.com/", label: "Visit TheOfficeSquad" }]
         }
     },
     { slug: "neeti-khaitan", title: "Neeti Khaitan", guest: "Neeti Khaitan", season: 4, episode: 15, description: "Neeti Khaitan discusses her entrepreneurial journey and business insights.", image: "/images/podcast/season-4/neeti-khaitan.jpg", youtube: "wBn8I9CdhjY" },

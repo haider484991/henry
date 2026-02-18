@@ -19,12 +19,12 @@ export async function createEpisode(data: {
     subheadline?: string;
     fullDescription?: string;
     keyInsights?: string;
+    transcript?: string;
     guestContact?: {
         phone?: string;
         email?: string;
         address?: string;
-        website?: string;
-        websiteLabel?: string;
+        links?: { url: string; label: string }[];
     };
     published?: boolean;
 }) {
@@ -45,11 +45,11 @@ export async function createEpisode(data: {
         subheadline: data.subheadline || null,
         full_description: data.fullDescription || null,
         key_insights: data.keyInsights || null,
+        transcript: data.transcript || null,
         guest_phone: data.guestContact?.phone || null,
         guest_email: data.guestContact?.email || null,
         guest_address: data.guestContact?.address || null,
-        guest_website: data.guestContact?.website || null,
-        guest_website_label: data.guestContact?.websiteLabel || null,
+        guest_links: data.guestContact?.links?.length ? data.guestContact.links : null,
         published: data.published ?? true,
     };
 
@@ -86,12 +86,12 @@ export async function updateEpisode(id: string, data: Partial<{
     subheadline: string;
     fullDescription: string;
     keyInsights: string;
+    transcript: string;
     guestContact: {
         phone?: string;
         email?: string;
         address?: string;
-        website?: string;
-        websiteLabel?: string;
+        links?: { url: string; label: string }[];
     };
     published: boolean;
 }>) {
@@ -111,13 +111,13 @@ export async function updateEpisode(id: string, data: Partial<{
     if (data.subheadline !== undefined) updateData.subheadline = data.subheadline;
     if (data.fullDescription !== undefined) updateData.full_description = data.fullDescription;
     if (data.keyInsights !== undefined) updateData.key_insights = data.keyInsights;
+    if (data.transcript !== undefined) updateData.transcript = data.transcript;
     if (data.published !== undefined) updateData.published = data.published;
     if (data.guestContact) {
         if (data.guestContact.phone !== undefined) updateData.guest_phone = data.guestContact.phone;
         if (data.guestContact.email !== undefined) updateData.guest_email = data.guestContact.email;
         if (data.guestContact.address !== undefined) updateData.guest_address = data.guestContact.address;
-        if (data.guestContact.website !== undefined) updateData.guest_website = data.guestContact.website;
-        if (data.guestContact.websiteLabel !== undefined) updateData.guest_website_label = data.guestContact.websiteLabel;
+        updateData.guest_links = data.guestContact.links?.length ? data.guestContact.links : null;
     }
 
     const { error } = await supabaseAdmin

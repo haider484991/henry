@@ -43,7 +43,11 @@
       "Bash(git -C \"C:\\\\Projects\\\\Web\\\\henry\" log --oneline -5)",
       "Bash(git -C \"C:\\\\Projects\\\\Web\\\\henry\" add \"src/app/\\(main\\)/book/page.tsx\")",
       "Bash(git -C \"C:\\\\Projects\\\\Web\\\\henry\" commit -m \"$\\(cat <<''EOF''\nfeat: Replace book page disclaimer with required acceptance popup modal\n\nThe disclaimer section below the calendar is now a blocking modal that\nappears on page load. Users must accept the Guest Release & Disclaimer\nbefore the Calendly calendar loads. Includes effective date of Feb 6, 2026.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git -C \"C:\\\\Projects\\\\Web\\\\henry\" push)"
+      "Bash(git -C \"C:\\\\Projects\\\\Web\\\\henry\" push)",
+      "Bash(npx next build)",
+      "Bash(npx supabase:*)",
+      "Bash(nslookup:*)",
+      "Bash(git add:*)"
     ]
   }
 }

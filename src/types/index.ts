@@ -1,10 +1,14 @@
 // Podcast/Episode Types
+export interface GuestLink {
+    url: string;
+    label: string;
+}
+
 export interface GuestContact {
     phone?: string;
     email?: string;
     address?: string;
-    website?: string;
-    websiteLabel?: string;
+    links?: GuestLink[];
 }
 
 export interface Episode {

@@ -379,9 +379,10 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
                                                         </div>
                                                     </div>
                                                 )}
-                                                {episode.guestContact.website && (
+                                                {episode.guestContact.links?.map((link, index) => (
                                                     <a
-                                                        href={episode.guestContact.website}
+                                                        key={index}
+                                                        href={link.url}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow group"
@@ -390,11 +391,11 @@ export default function EpisodePage({ episode }: EpisodePageProps) {
                                                             <ExternalLink className="w-5 h-5" />
                                                         </div>
                                                         <div>
-                                                            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Website</p>
-                                                            <p className="font-medium text-foreground">{episode.guestContact.websiteLabel || "Visit Website"}</p>
+                                                            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{link.label || "Website"}</p>
+                                                            <p className="font-medium text-foreground">{link.label || "Visit Website"}</p>
                                                         </div>
                                                     </a>
-                                                )}
+                                                ))}
                                             </div>
                                         </div>
                                     </div>

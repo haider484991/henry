@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Play, Headphones, ExternalLink, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, Play, Headphones, ExternalLink, Phone, Mail, MapPin, FileText, ChevronDown } from "lucide-react";
 
 interface Episode {
     id: string;
@@ -20,17 +20,18 @@ interface Episode {
     subheadline?: string;
     fullDescription?: string;
     keyInsights?: string;
+    transcript?: string;
     guestContact?: {
         phone?: string;
         email?: string;
         address?: string;
-        website?: string;
-        websiteLabel?: string;
+        links?: { url: string; label: string }[];
     };
 }
 
 export function EpisodeContent({ episode }: { episode: Episode }) {
     const [imageError, setImageError] = useState(false);
+    const [transcriptOpen, setTranscriptOpen] = useState(false);
 
     // Try maxresdefault first, fall back to hqdefault if needed
     const getYoutubeThumbnail = (videoId: string) => {
@@ -170,6 +171,47 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                 </section>
             )}
 
+            {/* Episode Transcript */}
+            {episode.transcript && (
+                <section className="py-16 md:py-24 bg-secondary/30">
+                    <div className="w-full px-8 md:px-16 lg:px-24">
+                        <div className="max-w-4xl">
+                            <div className="flex items-center gap-3 mb-8">
+                                <FileText className="w-6 h-6 text-primary" />
+                                <h2 className="text-2xl font-medium text-foreground">Episode Transcript</h2>
+                            </div>
+                            <div className="bg-white rounded-lg border border-border overflow-hidden">
+                                <div
+                                    className={`relative ${transcriptOpen ? '' : 'max-h-48 overflow-hidden'}`}
+                                >
+                                    <div className="p-8 whitespace-pre-line text-muted-foreground leading-relaxed">
+                                        {episode.transcript.split(/(\[?\d{1,2}:\d{2}(?::\d{2})?\]?)/).map((part, i) =>
+                                            /^\[?\d{1,2}:\d{2}(?::\d{2})?\]?$/.test(part) ? (
+                                                <span key={i} className="text-primary/60 font-mono text-sm">{part}</span>
+                                            ) : (
+                                                <span key={i}>{part}</span>
+                                            )
+                                        )}
+                                    </div>
+                                    {!transcriptOpen && (
+                                        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
+                                    )}
+                                </div>
+                                <div className="px-8 py-4 border-t border-border">
+                                    <button
+                                        onClick={() => setTranscriptOpen(!transcriptOpen)}
+                                        className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+                                    >
+                                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${transcriptOpen ? 'rotate-180' : ''}`} />
+                                        {transcriptOpen ? 'Collapse Transcript' : 'Read Full Transcript'}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
+
             {/* Guest Contact */}
             {episode.guestContact && (
                 <section className="py-16 md:py-24 bg-secondary/30">
@@ -199,19 +241,19 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                                         <span className="text-foreground">{episode.guestContact.address}</span>
                                     </div>
                                 )}
-                                {episode.guestContact.website && (
-                                    <div className="flex items-center gap-4">
+                                {episode.guestContact.links?.map((link, index) => (
+                                    <div key={index} className="flex items-center gap-4">
                                         <ExternalLink className="w-5 h-5 text-primary" />
                                         <a
-                                            href={episode.guestContact.website}
+                                            href={link.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-primary hover:underline"
                                         >
-                                            {episode.guestContact.websiteLabel || episode.guestContact.website}
+                                            {link.label || link.url}
                                         </a>
                                     </div>
-                                )}
+                                ))}
                             </address>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Save, Trash2, Loader2, Youtube, Music } from "lucide-react";
+import { ArrowLeft, Save, Trash2, Loader2, Youtube, Music, Plus } from "lucide-react";
 import { getEpisodeById, updateEpisode, deleteEpisode, getSeasons } from "@/lib/actions";
 import { RichTextEditor } from "@/components/admin/RichTextEditor";
 import { FileUpload } from "@/components/admin/FileUpload";
@@ -36,11 +36,11 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
         subheadline: "",
         fullDescription: "",
         keyInsights: "",
+        transcript: "",
         phone: "",
         email: "",
         address: "",
-        website: "",
-        websiteLabel: "",
+        links: [] as { url: string; label: string }[],
         published: true,
     });
 
@@ -67,11 +67,11 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                     subheadline: episode.subheadline || "",
                     fullDescription: episode.fullDescription || "",
                     keyInsights: episode.keyInsights || "",
+                    transcript: episode.transcript || "",
                     phone: episode.guestContact?.phone || "",
                     email: episode.guestContact?.email || "",
                     address: episode.guestContact?.address || "",
-                    website: episode.guestContact?.website || "",
-                    websiteLabel: episode.guestContact?.websiteLabel || "",
+                    links: episode.guestContact?.links || [],
                     published: episode.published ?? true,
                 });
             }
@@ -98,12 +98,12 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                 subheadline: formData.subheadline || undefined,
                 fullDescription: formData.fullDescription || undefined,
                 keyInsights: formData.keyInsights || undefined,
-                guestContact: (formData.phone || formData.email || formData.website) ? {
+                transcript: formData.transcript || undefined,
+                guestContact: (formData.phone || formData.email || formData.links.length > 0) ? {
                     phone: formData.phone || undefined,
                     email: formData.email || undefined,
                     address: formData.address || undefined,
-                    website: formData.website || undefined,
-                    websiteLabel: formData.websiteLabel || undefined,
+                    links: formData.links.filter(l => l.url) || undefined,
                 } : undefined,
                 published: formData.published,
             };
@@ -389,6 +389,27 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                         </div>
                     </div>
 
+                    {/* Transcript */}
+                    <div className="bg-white rounded-xl border border-gray-200 p-6">
+                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Transcript</h2>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                Episode Transcript
+                            </label>
+                            <textarea
+                                name="transcript"
+                                value={formData.transcript}
+                                onChange={handleChange}
+                                rows={12}
+                                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono text-sm"
+                                placeholder="Paste the full episode transcript here..."
+                            />
+                            <p className="text-xs text-gray-500 mt-1">
+                                Paste the transcript text from your transcription service. Timestamps like [00:12:34] will be styled automatically on the episode page.
+                            </p>
+                        </div>
+                    </div>
+
                     {/* Guest Contact */}
                     <div className="bg-white rounded-xl border border-gray-200 p-6">
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Guest Contact Information</h2>
@@ -435,32 +456,63 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                                 />
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Website URL
+                            <div className="md:col-span-2">
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Links
                                 </label>
-                                <input
-                                    type="url"
-                                    name="website"
-                                    value={formData.website}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-                                    placeholder="https://example.com"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Website Label
-                                </label>
-                                <input
-                                    type="text"
-                                    name="websiteLabel"
-                                    value={formData.websiteLabel}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-                                    placeholder="Visit Website"
-                                />
+                                <div className="space-y-3">
+                                    {formData.links.map((link, index) => (
+                                        <div key={index} className="flex gap-2 items-start">
+                                            <input
+                                                type="url"
+                                                value={link.url}
+                                                onChange={(e) => {
+                                                    const newLinks = [...formData.links];
+                                                    newLinks[index] = { ...newLinks[index], url: e.target.value };
+                                                    setFormData(prev => ({ ...prev, links: newLinks }));
+                                                }}
+                                                className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                                placeholder="https://example.com"
+                                            />
+                                            <input
+                                                type="text"
+                                                value={link.label}
+                                                onChange={(e) => {
+                                                    const newLinks = [...formData.links];
+                                                    newLinks[index] = { ...newLinks[index], label: e.target.value };
+                                                    setFormData(prev => ({ ...prev, links: newLinks }));
+                                                }}
+                                                className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                                placeholder="Label (e.g., LinkedIn, Website)"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setFormData(prev => ({
+                                                        ...prev,
+                                                        links: prev.links.filter((_, i) => i !== index),
+                                                    }));
+                                                }}
+                                                className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setFormData(prev => ({
+                                                ...prev,
+                                                links: [...prev.links, { url: "", label: "" }],
+                                            }));
+                                        }}
+                                        className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                                    >
+                                        <Plus className="w-4 h-4" />
+                                        Add Link
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

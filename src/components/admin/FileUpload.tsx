@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Upload, X, Loader2, Image as ImageIcon, Video } from "lucide-react";
-import { uploadImage, uploadVideo } from "@/lib/storage";
+import { Upload, X, Loader2, Image as ImageIcon, Video, Trash2 } from "lucide-react";
+import { uploadImage, uploadVideo, deleteFile } from "@/lib/storage";
 
 interface FileUploadProps {
     type: "image" | "video";
@@ -57,7 +57,30 @@ export function FileUpload({ type, onUpload, currentUrl, onRemove }: FileUploadP
         }
     }
 
-    function handleRemove() {
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    async function handleRemove() {
+        // Extract the storage path from the full public URL
+        if (preview && preview.includes("/storage/v1/object/public/")) {
+            setIsDeleting(true);
+            try {
+                const urlParts = preview.split("/storage/v1/object/public/");
+                if (urlParts[1]) {
+                    // urlParts[1] = "media/images/filename.jpg" -> bucket="media", path="images/filename.jpg"
+                    const segments = urlParts[1].split("/");
+                    const bucket = segments[0];
+                    const path = segments.slice(1).join("/");
+                    if (path) {
+                        await deleteFile(path, bucket);
+                    }
+                }
+            } catch (err) {
+                console.error("Error deleting file:", err);
+            } finally {
+                setIsDeleting(false);
+            }
+        }
+
         setPreview(null);
         if (inputRef.current) {
             inputRef.current.value = "";
@@ -73,22 +96,35 @@ export function FileUpload({ type, onUpload, currentUrl, onRemove }: FileUploadP
                         <img
                             src={preview}
                             alt="Preview"
-                            className="w-full h-48 object-cover"
+                            className={`w-full h-48 object-cover transition-opacity ${isUploading ? "opacity-40" : ""}`}
                         />
                     ) : (
                         <video
                             src={preview}
                             controls
-                            className="w-full h-48 object-cover"
+                            className={`w-full h-48 object-cover transition-opacity ${isUploading ? "opacity-40" : ""}`}
                         />
                     )}
-                    <button
-                        type="button"
-                        onClick={handleRemove}
-                        className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
-                    >
-                        <X className="w-4 h-4" />
-                    </button>
+                    {isUploading && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60">
+                            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                            <span className="text-sm font-medium text-primary mt-2">Uploading...</span>
+                        </div>
+                    )}
+                    {!isUploading && (
+                        <button
+                            type="button"
+                            onClick={handleRemove}
+                            disabled={isDeleting}
+                            className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors disabled:opacity-50"
+                        >
+                            {isDeleting ? (
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                            ) : (
+                                <Trash2 className="w-4 h-4" />
+                            )}
+                        </button>
+                    )}
                 </div>
             ) : (
                 <label className={`flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer transition-colors ${

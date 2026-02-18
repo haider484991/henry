@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS episodes (
     guest_address TEXT,
     guest_website VARCHAR(500),
     guest_website_label VARCHAR(100),
+    guest_links JSONB DEFAULT NULL,
+    transcript TEXT,
     published BOOLEAN DEFAULT true,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),

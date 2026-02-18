@@ -12,32 +12,23 @@ export async function uploadFile(
     folder: string = ""
 ): Promise<UploadResult> {
     try {
-        // Generate unique filename
-        const timestamp = Date.now();
-        const randomStr = Math.random().toString(36).substring(2, 8);
-        const extension = file.name.split(".").pop();
-        const filename = `${timestamp}-${randomStr}.${extension}`;
-        const path = folder ? `${folder}/${filename}` : filename;
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("bucket", bucket);
+        formData.append("folder", folder);
 
-        // Upload to Supabase Storage
-        const { data, error } = await supabase.storage
-            .from(bucket)
-            .upload(path, file, {
-                cacheControl: "3600",
-                upsert: false,
-            });
+        const response = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+        });
 
-        if (error) {
-            console.error("Upload error:", error);
-            return { success: false, error: error.message };
+        const result = await response.json();
+
+        if (!result.success) {
+            return { success: false, error: result.error || "Upload failed" };
         }
 
-        // Get public URL
-        const { data: urlData } = supabase.storage
-            .from(bucket)
-            .getPublicUrl(data.path);
-
-        return { success: true, url: urlData.publicUrl };
+        return { success: true, url: result.url };
     } catch (error) {
         console.error("Upload error:", error);
         return { success: false, error: "Failed to upload file" };
@@ -81,10 +72,16 @@ export async function deleteFile(
     bucket: string = "media"
 ): Promise<{ success: boolean; error?: string }> {
     try {
-        const { error } = await supabase.storage.from(bucket).remove([path]);
+        const response = await fetch("/api/upload", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path, bucket }),
+        });
 
-        if (error) {
-            return { success: false, error: error.message };
+        const result = await response.json();
+
+        if (!result.success) {
+            return { success: false, error: result.error || "Delete failed" };
         }
 
         return { success: true };

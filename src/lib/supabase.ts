@@ -34,6 +34,8 @@ export interface DbEpisode {
     guest_address: string | null;
     guest_website: string | null;
     guest_website_label: string | null;
+    guest_links: { url: string; label: string }[] | null;
+    transcript: string | null;
     published: boolean;
     created_at: string;
     updated_at: string;
@@ -82,13 +84,17 @@ export function dbEpisodeToEpisode(dbEpisode: DbEpisode) {
         subheadline: dbEpisode.subheadline || undefined,
         fullDescription: dbEpisode.full_description || undefined,
         keyInsights: dbEpisode.key_insights || undefined,
-        guestContact: (dbEpisode.guest_phone || dbEpisode.guest_email || dbEpisode.guest_website) ? {
+        guestContact: (dbEpisode.guest_phone || dbEpisode.guest_email || dbEpisode.guest_links || dbEpisode.guest_website) ? {
             phone: dbEpisode.guest_phone || undefined,
             email: dbEpisode.guest_email || undefined,
             address: dbEpisode.guest_address || undefined,
-            website: dbEpisode.guest_website || undefined,
-            websiteLabel: dbEpisode.guest_website_label || undefined,
+            links: dbEpisode.guest_links
+                ? dbEpisode.guest_links
+                : dbEpisode.guest_website
+                    ? [{ url: dbEpisode.guest_website, label: dbEpisode.guest_website_label || 'Website' }]
+                    : undefined,
         } : undefined,
+        transcript: dbEpisode.transcript || undefined,
         published: dbEpisode.published,
         createdAt: dbEpisode.created_at,
         updatedAt: dbEpisode.updated_at,
