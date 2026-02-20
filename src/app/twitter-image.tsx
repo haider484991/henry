@@ -80,7 +80,7 @@ export default async function TwitterImage() {
                         marginTop: 20,
                     }}
                 >
-                    Dallas/Plano, Texas
+                    Dallas, Texas
                 </div>
             </div>
         ),

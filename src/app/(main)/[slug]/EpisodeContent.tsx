@@ -40,9 +40,11 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
             : `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
     };
 
-    const thumbnailUrl = episode.youtube
-        ? getYoutubeThumbnail(episode.youtube)
-        : episode.image || "/images/podcast-cover.jpg";
+    const thumbnailUrl = episode.image
+        ? episode.image
+        : episode.youtube
+            ? getYoutubeThumbnail(episode.youtube)
+            : "/images/podcast-cover.jpg";
 
     return (
         <article className="min-h-screen bg-background">

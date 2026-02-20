@@ -18,8 +18,7 @@ export const siteConfig = {
         "entrepreneurship podcast",
         "Dallas entrepreneur",
         "Dallas Texas podcast",
-        "Plano Texas",
-        "CEO interviews",
+                "CEO interviews",
         "founder interviews",
         "Shark Tank alumni",
         "business growth strategies",
@@ -189,12 +188,12 @@ export function generateEpisodeMetadata(episode: {
     episode: number;
 }): Metadata {
     const url = `${siteConfig.url}/${episode.slug}`;
-    const image = episode.youtube
-        ? `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`
-        : episode.image
-            ? episode.image.startsWith("http")
-                ? episode.image
-                : `${siteConfig.url}${episode.image}`
+    const image = episode.image
+        ? episode.image.startsWith("http")
+            ? episode.image
+            : `${siteConfig.url}${episode.image}`
+        : episode.youtube
+            ? `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`
             : siteConfig.ogImage;
 
     const title = `${episode.guest} - S${episode.season} E${episode.episode}`;

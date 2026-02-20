@@ -112,7 +112,7 @@ export default async function OGImage() {
                         borderRadius: '4px',
                     }}
                 >
-                    Dallas/Plano, Texas
+                    Dallas, Texas
                 </div>
             </div>
         ),

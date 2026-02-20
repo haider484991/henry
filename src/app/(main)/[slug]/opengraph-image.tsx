@@ -204,7 +204,7 @@ export default async function OGImage({ params }: { params: Promise<{ slug: stri
                                 Henry Harrison
                             </div>
                             <div style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)' }}>
-                                Dallas/Plano, Texas
+                                Dallas, Texas
                             </div>
                         </div>
                     </div>

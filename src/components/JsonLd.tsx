@@ -54,7 +54,7 @@ export function PersonJsonLd() {
         name: "Henry Harrison",
         url: siteConfig.url,
         image: `${siteConfig.url}/opengraph-image`,
-        description: "Dallas/Plano, Texas-based entrepreneur with 30+ years of experience. Host of the Entrepreneurs, Business & Finance Podcast. Founded 12+ companies across Private Equity, sustainable tech, and more. Past President of EO Dallas Chapter.",
+        description: "Dallas, Texas-based entrepreneur with 30+ years of experience. Host of the Entrepreneurs, Business & Finance Podcast. Founded 12+ companies across Private Equity, sustainable tech, and more. Past President of EO Dallas Chapter.",
         jobTitle: "Entrepreneur & Podcast Host",
         worksFor: {
             "@type": "Organization",
@@ -156,7 +156,7 @@ export function PodcastJsonLd() {
         "@id": `${siteConfig.url}/podcast/#podcast`,
         name: "Entrepreneurs, Business & Finance Podcast",
         alternateName: "Henry Harrison Podcast",
-        description: "The Entrepreneurs, Business & Finance Podcast hosted by Henry Harrison from Dallas/Plano, Texas. In-depth interviews with visionary entrepreneurs, CEOs, founders, Shark Tank alumni, industry experts, and financial leaders sharing insights on business growth, AI, sales mastery, and financial decision-making.",
+        description: "The Entrepreneurs, Business & Finance Podcast hosted by Henry Harrison from Dallas, Texas. In-depth interviews with visionary entrepreneurs, CEOs, founders, Shark Tank alumni, industry experts, and financial leaders sharing insights on business growth, AI, sales mastery, and financial decision-making.",
         url: `${siteConfig.url}/podcast`,
         webFeed: [
             siteConfig.social.spotify,
@@ -185,7 +185,7 @@ export function PodcastJsonLd() {
         },
         contentLocation: {
             "@type": "Place",
-            name: "Dallas/Plano, Texas",
+            name: "Dallas, Texas",
             address: {
                 "@type": "PostalAddress",
                 addressLocality: "Dallas",

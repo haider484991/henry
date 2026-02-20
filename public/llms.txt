@@ -1,6 +1,6 @@
 # Henry Harrison - Entrepreneurs, Business & Finance Podcast
 
-> The Entrepreneurs, Business & Finance Podcast is hosted by Henry Harrison, a Dallas/Plano, Texas-based entrepreneur with over 30 years of experience founding and growing 12+ companies across various industries.
+> The Entrepreneurs, Business & Finance Podcast is hosted by Henry Harrison, a Dallas, Texas-based entrepreneur with over 30 years of experience founding and growing 12+ companies across various industries.
 
 ## About This Website
 
@@ -9,7 +9,7 @@ This is the official website for Henry Harrison and the Entrepreneurs, Business 
 ## Key Information
 
 - **Host**: Henry Harrison
-- **Location**: Dallas/Plano, Texas, USA
+- **Location**: Dallas, Texas, USA
 - **Experience**: 30+ years in entrepreneurship
 - **Companies Founded**: 12+ across Private Equity, sustainable tech, and more
 - **Affiliations**: EO Dallas Chapter (Past President), Young Presidents Organization (YPO)

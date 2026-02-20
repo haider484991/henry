@@ -172,7 +172,7 @@ export function AboutSection() {
                             Whether you&apos;re an aspiring founder, a seasoned executive, or simply passionate about business and finance, you&apos;ll find actionable insights, candid stories, and motivational lessons from guests who have been there—from Shark Tank alumni and venture-backed founders to sales legends and senior entrepreneurs.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Join Henry Harrison from Dallas/Plano, Texas, as he uncovers the strategies, challenges, and triumphs shaping today&apos;s business landscape. Subscribe now for your regular dose of real entrepreneurial talk!
+                            Join Henry Harrison from Dallas, Texas, as he uncovers the strategies, challenges, and triumphs shaping today&apos;s business landscape. Subscribe now for your regular dose of real entrepreneurial talk!
                         </p>
                         <Link
                             href="/podcast"
