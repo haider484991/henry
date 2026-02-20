@@ -4,7 +4,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { PodcastSection } from "@/components/PodcastSection";
 import { ContactForm } from "@/components/ContactForm";
 import { LocalBusinessJsonLd, PodcastJsonLd } from "@/components/JsonLd";
-import { getEpisodes } from "@/lib/actions";
+import { getEpisodesForCarousel } from "@/lib/actions";
 
 export const metadata: Metadata = {
     title: "Henry Harrison | Entrepreneur, Investor & Philanthropist | Dallas, Texas",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const episodes = await getEpisodes();
+  const episodes = await getEpisodesForCarousel();
 
   return (
     <>

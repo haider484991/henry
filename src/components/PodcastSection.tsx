@@ -17,8 +17,8 @@ interface EpisodeData {
     season: number;
     episode: number;
     description: string;
-    youtube?: string;
-    image?: string;
+    youtube: string;
+    image: string | null;
 }
 
 export function PodcastSection({ episodes }: { episodes: EpisodeData[] }) {
@@ -30,7 +30,7 @@ export function PodcastSection({ episodes }: { episodes: EpisodeData[] }) {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
 
-    const allEpisodes = useMemo(() => episodes.filter(ep => ep.youtube), [episodes]);
+    const allEpisodes = useMemo(() => episodes, [episodes]);
 
     const seasons = useMemo(() => {
         const seasonNumbers = [...new Set(allEpisodes.map(ep => ep.season))].sort((a, b) => b - a);
@@ -44,11 +44,10 @@ export function PodcastSection({ episodes }: { episodes: EpisodeData[] }) {
         ? allEpisodes
         : allEpisodes.filter(ep => ep.season === activeSeason);
 
-    // Get thumbnail URL - prefer local image over YouTube
+    // Get thumbnail URL - use database image if set, otherwise YouTube thumbnail
     const getThumbnail = (episode: EpisodeData) => {
         if (episode.image) return episode.image;
-        if (episode.youtube) return `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`;
-        return "/images/podcast-cover.jpg";
+        return `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`;
     };
 
     useLayoutEffect(() => {

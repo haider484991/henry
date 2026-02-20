@@ -179,6 +179,32 @@ export async function getEpisodes() {
     return data.map((ep: DbEpisode) => dbEpisodeToEpisode(ep));
 }
 
+// Lightweight query for the home page carousel - only fetches needed fields
+export async function getEpisodesForCarousel() {
+    const { data, error } = await supabase
+        .from('episodes')
+        .select('slug, guest, season, episode, description, youtube, image')
+        .eq('published', true)
+        .not('youtube', 'is', null)
+        .order('season', { ascending: false })
+        .order('episode', { ascending: false });
+
+    if (error) {
+        console.error('Error fetching episodes for carousel:', error);
+        return [];
+    }
+
+    return data.map(ep => ({
+        slug: ep.slug,
+        guest: ep.guest,
+        season: ep.season,
+        episode: ep.episode,
+        description: ep.description,
+        youtube: ep.youtube as string,
+        image: ep.image || null,
+    }));
+}
+
 export async function getEpisodeBySlug(slug: string) {
     const { data, error } = await supabase
         .from('episodes')
