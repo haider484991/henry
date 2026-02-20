@@ -93,7 +93,7 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                 description: formData.description,
                 youtube: formData.youtube || undefined,
                 soundcloud: formData.soundcloud || undefined,
-                image: formData.image || undefined,
+                image: formData.image || null,
                 headline: formData.headline || undefined,
                 subheadline: formData.subheadline || undefined,
                 fullDescription: formData.fullDescription || undefined,

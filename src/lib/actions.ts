@@ -79,7 +79,7 @@ export async function updateEpisode(id: string, data: Partial<{
     episode: number;
     description: string;
     topics: string[];
-    image: string;
+    image: string | null;
     soundcloud: string;
     youtube: string;
     headline: string;
@@ -92,7 +92,7 @@ export async function updateEpisode(id: string, data: Partial<{
         email?: string;
         address?: string;
         links?: { url: string; label: string }[];
-    };
+    } | null;
     published: boolean;
 }>) {
     const updateData: Record<string, unknown> = {};

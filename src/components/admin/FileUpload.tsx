@@ -60,13 +60,12 @@ export function FileUpload({ type, onUpload, currentUrl, onRemove }: FileUploadP
     const [isDeleting, setIsDeleting] = useState(false);
 
     async function handleRemove() {
-        // Extract the storage path from the full public URL
+        // Delete from Supabase storage if it's a Supabase URL
         if (preview && preview.includes("/storage/v1/object/public/")) {
             setIsDeleting(true);
             try {
                 const urlParts = preview.split("/storage/v1/object/public/");
                 if (urlParts[1]) {
-                    // urlParts[1] = "media/images/filename.jpg" -> bucket="media", path="images/filename.jpg"
                     const segments = urlParts[1].split("/");
                     const bucket = segments[0];
                     const path = segments.slice(1).join("/");
@@ -80,6 +79,8 @@ export function FileUpload({ type, onUpload, currentUrl, onRemove }: FileUploadP
                 setIsDeleting(false);
             }
         }
+        // For local/WordPress images, just clear the reference.
+        // The actual file removal is handled separately.
 
         setPreview(null);
         if (inputRef.current) {

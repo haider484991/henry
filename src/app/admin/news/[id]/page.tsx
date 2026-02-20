@@ -71,7 +71,7 @@ export default function EditArticlePage({ params }: { params: Promise<{ id: stri
                 excerpt: formData.excerpt,
                 content: formData.content || undefined,
                 category: formData.category,
-                image: formData.image || "/images/news/placeholder.jpg",
+                image: formData.image || "",
                 author: formData.author,
                 tags: formData.tags ? formData.tags.split(",").map((t) => t.trim()) : [],
                 published: formData.published,
