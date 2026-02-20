@@ -32,6 +32,7 @@ interface Episode {
 export function EpisodeContent({ episode }: { episode: Episode }) {
     const [imageError, setImageError] = useState(false);
     const [transcriptOpen, setTranscriptOpen] = useState(false);
+    const [showVideo, setShowVideo] = useState(false);
 
     // Try maxresdefault first, fall back to hqdefault if needed
     const getYoutubeThumbnail = (videoId: string) => {
@@ -106,17 +107,35 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* YouTube Video */}
                         {episode.youtube && (
-                            <div className="aspect-video bg-black rounded-lg overflow-hidden">
-                                <iframe
-                                    width="100%"
-                                    height="100%"
-                                    src={`https://www.youtube.com/embed/${episode.youtube}`}
-                                    title={`${episode.guest} - Henry Harrison Podcast`}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    className="w-full h-full"
-                                    loading="lazy"
-                                />
+                            <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
+                                {showVideo ? (
+                                    <iframe
+                                        width="100%"
+                                        height="100%"
+                                        src={`https://www.youtube.com/embed/${episode.youtube}?autoplay=1`}
+                                        title={`${episode.guest} - Henry Harrison Podcast`}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        className="w-full h-full"
+                                    />
+                                ) : (
+                                    <button
+                                        onClick={() => setShowVideo(true)}
+                                        className="w-full h-full relative group cursor-pointer"
+                                        aria-label={`Play ${episode.guest} interview`}
+                                    >
+                                        <img
+                                            src={`https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`}
+                                            alt={`${episode.guest} - Henry Harrison Podcast`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                                            <div className="w-20 h-20 rounded-full bg-red-600 group-hover:bg-red-700 flex items-center justify-center transition-colors shadow-2xl">
+                                                <Play className="w-9 h-9 text-white ml-1" fill="white" />
+                                            </div>
+                                        </div>
+                                    </button>
+                                )}
                             </div>
                         )}
 

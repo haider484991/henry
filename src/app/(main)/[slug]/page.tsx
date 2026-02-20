@@ -13,8 +13,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
 
-    // First check for article
-    const article = await getArticleBySlug(slug);
+    const [article, episode] = await Promise.all([
+        getArticleBySlug(slug),
+        getEpisodeBySlug(slug),
+    ]);
+
     if (article) {
         return generateArticleMetadata({
             title: article.title,
@@ -28,8 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         });
     }
 
-    // Then check for episode
-    const episode = await getEpisodeBySlug(slug);
     if (episode) {
         return generateEpisodeMetadata({
             title: episode.title,
@@ -51,8 +52,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SlugPage({ params }: Props) {
     const { slug } = await params;
 
-    // First check for article
-    const article = await getArticleBySlug(slug);
+    const [article, episode] = await Promise.all([
+        getArticleBySlug(slug),
+        getEpisodeBySlug(slug),
+    ]);
+
     if (article) {
         return (
             <>
@@ -78,8 +82,6 @@ export default async function SlugPage({ params }: Props) {
         );
     }
 
-    // Then check for episode
-    const episode = await getEpisodeBySlug(slug);
     if (episode) {
         return (
             <>

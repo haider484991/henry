@@ -1,28 +1,27 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Play, Headphones, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { episodes } from "@/data/episodes";
 
 // Register once
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-// Get all episodes with YouTube videos grouped by season
-const allEpisodes = episodes.filter(ep => ep.youtube);
-const seasons = [
-    { id: "all", label: "All" },
-    { id: 4, label: "Season 4" },
-    { id: 3, label: "Season 3" },
-    { id: 2, label: "Season 2" },
-    { id: 1, label: "Season 1" },
-];
+interface EpisodeData {
+    slug: string;
+    guest: string;
+    season: number;
+    episode: number;
+    description: string;
+    youtube?: string;
+    image?: string;
+}
 
-export function PodcastSection() {
+export function PodcastSection({ episodes }: { episodes: EpisodeData[] }) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
@@ -31,13 +30,25 @@ export function PodcastSection() {
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
 
+    const allEpisodes = useMemo(() => episodes.filter(ep => ep.youtube), [episodes]);
+
+    const seasons = useMemo(() => {
+        const seasonNumbers = [...new Set(allEpisodes.map(ep => ep.season))].sort((a, b) => b - a);
+        return [
+            { id: "all" as const, label: "All" },
+            ...seasonNumbers.map(n => ({ id: n, label: `Season ${n}` })),
+        ];
+    }, [allEpisodes]);
+
     const filteredEpisodes = activeSeason === "all"
         ? allEpisodes
         : allEpisodes.filter(ep => ep.season === activeSeason);
 
-    // Get YouTube thumbnail URL
-    const getYouTubeThumbnail = (videoId: string) => {
-        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    // Get thumbnail URL - prefer local image over YouTube
+    const getThumbnail = (episode: EpisodeData) => {
+        if (episode.image) return episode.image;
+        if (episode.youtube) return `https://img.youtube.com/vi/${episode.youtube}/maxresdefault.jpg`;
+        return "/images/podcast-cover.jpg";
     };
 
     useLayoutEffect(() => {
@@ -251,14 +262,12 @@ export function PodcastSection() {
                                     <div className="relative bg-[#0a323f] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300">
                                         {/* Thumbnail */}
                                         <div className="relative aspect-video overflow-hidden">
-                                            {episode.youtube && (
-                                                <img
-                                                    src={getYouTubeThumbnail(episode.youtube)}
-                                                    alt={episode.guest}
-                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                    draggable={false}
-                                                />
-                                            )}
+                                            <img
+                                                src={getThumbnail(episode)}
+                                                alt={episode.guest}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                draggable={false}
+                                            />
                                             {/* Overlay */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-[#0a323f] via-transparent to-transparent" />
 
@@ -307,8 +316,8 @@ export function PodcastSection() {
                 {/* Stats Row */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-16 border-t border-white/10">
                     {[
-                        { value: `${seasons.length}`, label: "Seasons" },
-                        { value: "50+", label: "Episodes" },
+                        { value: `${seasons.length - 1}`, label: "Seasons" },
+                        { value: `${allEpisodes.length}+`, label: "Episodes" },
                         { value: "50000+", label: "Listeners" },
                     ].map((stat, index) => (
                         <div key={index} className="text-center">

@@ -4,6 +4,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { PodcastSection } from "@/components/PodcastSection";
 import { ContactForm } from "@/components/ContactForm";
 import { LocalBusinessJsonLd, PodcastJsonLd } from "@/components/JsonLd";
+import { getEpisodes } from "@/lib/actions";
 
 export const metadata: Metadata = {
     title: "Henry Harrison | Entrepreneur, Investor & Philanthropist | Dallas, Texas",
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
     },
 };
 
-export default function Home() {
+export default async function Home() {
+  const episodes = await getEpisodes();
+
   return (
     <>
       <LocalBusinessJsonLd />
@@ -21,7 +24,7 @@ export default function Home() {
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-black selection:text-white">
         <Hero />
         <AboutSection />
-        <PodcastSection />
+        <PodcastSection episodes={episodes} />
         <ContactForm />
       </main>
     </>
