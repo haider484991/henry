@@ -32,6 +32,7 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
         youtube: "",
         soundcloud: "",
         image: "",
+        imageFilename: "",
         headline: "",
         subheadline: "",
         fullDescription: "",
@@ -63,6 +64,7 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                     youtube: episode.youtube || "",
                     soundcloud: episode.soundcloud || "",
                     image: episode.image || "",
+                    imageFilename: episode.imageFilename || "",
                     headline: episode.headline || "",
                     subheadline: episode.subheadline || "",
                     fullDescription: episode.fullDescription || "",
@@ -94,6 +96,7 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                 youtube: formData.youtube || undefined,
                 soundcloud: formData.soundcloud || undefined,
                 image: formData.image || null,
+                imageFilename: formData.imageFilename || null,
                 headline: formData.headline || undefined,
                 subheadline: formData.subheadline || undefined,
                 fullDescription: formData.fullDescription || undefined,
@@ -316,8 +319,8 @@ export default function EditEpisodePage({ params }: { params: Promise<{ id: stri
                                 <FileUpload
                                     type="image"
                                     currentUrl={formData.image}
-                                    onUpload={(url) => setFormData((prev) => ({ ...prev, image: url }))}
-                                    onRemove={() => setFormData((prev) => ({ ...prev, image: "" }))}
+                                    onUpload={(url, filename) => setFormData((prev) => ({ ...prev, image: url, imageFilename: filename || "" }))}
+                                    onRemove={() => setFormData((prev) => ({ ...prev, image: "", imageFilename: "" }))}
                                 />
                                 <div className="mt-2">
                                     <input

@@ -34,6 +34,17 @@ export async function DELETE(request: NextRequest) {
     }
 }
 
+// Slugify filename for SEO-friendly URLs
+function slugifyFilename(name: string): string {
+    const ext = name.split(".").pop() || "";
+    const base = name.replace(/\.[^/.]+$/, ""); // remove extension
+    const slug = base
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+    return `${slug}.${ext}`;
+}
+
 export async function POST(request: NextRequest) {
     try {
         const formData = await request.formData();
@@ -48,11 +59,10 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Generate unique filename
+        // Preserve original filename (slugified) with timestamp prefix for uniqueness
         const timestamp = Date.now();
-        const randomStr = Math.random().toString(36).substring(2, 8);
-        const extension = file.name.split(".").pop();
-        const filename = `${timestamp}-${randomStr}.${extension}`;
+        const seoFilename = slugifyFilename(file.name);
+        const filename = `${timestamp}-${seoFilename}`;
         const path = folder ? `${folder}/${filename}` : filename;
 
         // Convert File to ArrayBuffer for server-side upload
@@ -81,7 +91,11 @@ export async function POST(request: NextRequest) {
             .from(bucket)
             .getPublicUrl(data.path);
 
-        return NextResponse.json({ success: true, url: urlData.publicUrl });
+        return NextResponse.json({
+            success: true,
+            url: urlData.publicUrl,
+            filename: seoFilename,
+        });
     } catch (error) {
         console.error("Upload error:", error);
         return NextResponse.json(

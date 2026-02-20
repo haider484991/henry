@@ -3,6 +3,7 @@ import { supabase } from "./supabase";
 export type UploadResult = {
     success: boolean;
     url?: string;
+    filename?: string;
     error?: string;
 };
 
@@ -28,7 +29,7 @@ export async function uploadFile(
             return { success: false, error: result.error || "Upload failed" };
         }
 
-        return { success: true, url: result.url };
+        return { success: true, url: result.url, filename: result.filename };
     } catch (error) {
         console.error("Upload error:", error);
         return { success: false, error: "Failed to upload file" };

@@ -29,6 +29,7 @@ export default function NewEpisodePage() {
         youtube: "",
         soundcloud: "",
         image: "",
+        imageFilename: "",
         headline: "",
         subheadline: "",
         fullDescription: "",
@@ -74,6 +75,7 @@ export default function NewEpisodePage() {
                 youtube: formData.youtube || undefined,
                 soundcloud: formData.soundcloud || undefined,
                 image: formData.image || undefined,
+                imageFilename: formData.imageFilename || undefined,
                 headline: formData.headline || undefined,
                 subheadline: formData.subheadline || undefined,
                 fullDescription: formData.fullDescription || undefined,
@@ -282,8 +284,8 @@ export default function NewEpisodePage() {
                                 <FileUpload
                                     type="image"
                                     currentUrl={formData.image}
-                                    onUpload={(url) => setFormData((prev) => ({ ...prev, image: url }))}
-                                    onRemove={() => setFormData((prev) => ({ ...prev, image: "" }))}
+                                    onUpload={(url, filename) => setFormData((prev) => ({ ...prev, image: url, imageFilename: filename || "" }))}
+                                    onRemove={() => setFormData((prev) => ({ ...prev, image: "", imageFilename: "" }))}
                                 />
                                 <div className="mt-2">
                                     <input

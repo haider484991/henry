@@ -13,6 +13,7 @@ export async function createEpisode(data: {
     description: string;
     topics?: string[];
     image?: string;
+    imageFilename?: string;
     soundcloud?: string;
     youtube?: string;
     headline?: string;
@@ -39,6 +40,7 @@ export async function createEpisode(data: {
         description: data.description,
         topics: data.topics || null,
         image: data.image || null,
+        image_filename: data.imageFilename || null,
         soundcloud: data.soundcloud || null,
         youtube: data.youtube || null,
         headline: data.headline || null,
@@ -80,6 +82,7 @@ export async function updateEpisode(id: string, data: Partial<{
     description: string;
     topics: string[];
     image: string | null;
+    imageFilename: string | null;
     soundcloud: string;
     youtube: string;
     headline: string;
@@ -105,6 +108,7 @@ export async function updateEpisode(id: string, data: Partial<{
     if (data.description !== undefined) updateData.description = data.description;
     if (data.topics !== undefined) updateData.topics = data.topics;
     if (data.image !== undefined) updateData.image = data.image;
+    if (data.imageFilename !== undefined) updateData.image_filename = data.imageFilename;
     if (data.soundcloud !== undefined) updateData.soundcloud = data.soundcloud;
     if (data.youtube !== undefined) updateData.youtube = data.youtube;
     if (data.headline !== undefined) updateData.headline = data.headline;
@@ -247,6 +251,7 @@ export async function createArticle(data: {
     date?: string;
     category: string;
     image: string;
+    imageFilename?: string;
     author?: string;
     tags?: string[];
     published?: boolean;
@@ -262,6 +267,7 @@ export async function createArticle(data: {
         date: data.date || new Date().toISOString().split('T')[0],
         category: data.category,
         image: data.image,
+        image_filename: data.imageFilename || null,
         author: data.author || 'Henry Harrison',
         tags: data.tags || null,
         published: data.published ?? true,
@@ -294,6 +300,7 @@ export async function updateArticle(id: string, data: Partial<{
     date: string;
     category: string;
     image: string;
+    image_filename: string | null;
     author: string;
     tags: string[];
     published: boolean;

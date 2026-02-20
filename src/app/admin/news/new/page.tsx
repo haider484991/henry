@@ -24,6 +24,7 @@ export default function NewArticlePage() {
         content: "",
         category: "Texas News",
         image: "",
+        imageFilename: "",
         author: "Henry Harrison",
         tags: "",
         published: true,
@@ -60,6 +61,7 @@ export default function NewArticlePage() {
                 }),
                 category: formData.category,
                 image: formData.image || "/images/news/placeholder.jpg",
+                imageFilename: formData.imageFilename || undefined,
                 author: formData.author,
                 tags: formData.tags ? formData.tags.split(",").map((t) => t.trim()) : [],
                 published: formData.published,
@@ -175,8 +177,8 @@ export default function NewArticlePage() {
                         <FileUpload
                             type="image"
                             currentUrl={formData.image}
-                            onUpload={(url) => setFormData((prev) => ({ ...prev, image: url }))}
-                            onRemove={() => setFormData((prev) => ({ ...prev, image: "" }))}
+                            onUpload={(url, filename) => setFormData((prev) => ({ ...prev, image: url, imageFilename: filename || "" }))}
+                            onRemove={() => setFormData((prev) => ({ ...prev, image: "", imageFilename: "" }))}
                         />
                         <div className="mt-3">
                             <label className="block text-sm font-medium text-gray-700 mb-1">

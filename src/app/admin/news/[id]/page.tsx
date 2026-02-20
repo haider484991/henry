@@ -28,6 +28,7 @@ export default function EditArticlePage({ params }: { params: Promise<{ id: stri
         content: "",
         category: "Texas News",
         image: "",
+        imageFilename: "",
         author: "Henry Harrison",
         tags: "",
         published: true,
@@ -50,6 +51,7 @@ export default function EditArticlePage({ params }: { params: Promise<{ id: stri
                     content: article.content || "",
                     category: article.category || "Texas News",
                     image: article.image || "",
+                    imageFilename: article.imageFilename || "",
                     author: article.author || "Henry Harrison",
                     tags: article.tags?.join(", ") || "",
                     published: article.published ?? true,
@@ -72,6 +74,7 @@ export default function EditArticlePage({ params }: { params: Promise<{ id: stri
                 content: formData.content || undefined,
                 category: formData.category,
                 image: formData.image || "",
+                image_filename: formData.imageFilename || null,
                 author: formData.author,
                 tags: formData.tags ? formData.tags.split(",").map((t) => t.trim()) : [],
                 published: formData.published,
@@ -209,8 +212,8 @@ export default function EditArticlePage({ params }: { params: Promise<{ id: stri
                         <FileUpload
                             type="image"
                             currentUrl={formData.image}
-                            onUpload={(url) => setFormData((prev) => ({ ...prev, image: url }))}
-                            onRemove={() => setFormData((prev) => ({ ...prev, image: "" }))}
+                            onUpload={(url, filename) => setFormData((prev) => ({ ...prev, image: url, imageFilename: filename || "" }))}
+                            onRemove={() => setFormData((prev) => ({ ...prev, image: "", imageFilename: "" }))}
                         />
                         <div className="mt-3">
                             <label className="block text-sm font-medium text-gray-700 mb-1">

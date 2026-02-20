@@ -6,7 +6,7 @@ import { uploadImage, uploadVideo, deleteFile } from "@/lib/storage";
 
 interface FileUploadProps {
     type: "image" | "video";
-    onUpload: (url: string) => void;
+    onUpload: (url: string, filename?: string) => void;
     currentUrl?: string;
     onRemove?: () => void;
 }
@@ -43,7 +43,7 @@ export function FileUpload({ type, onUpload, currentUrl, onRemove }: FileUploadP
                 : await uploadVideo(file);
 
             if (result.success && result.url) {
-                onUpload(result.url);
+                onUpload(result.url, result.filename);
                 setPreview(result.url);
             } else {
                 setError(result.error || "Upload failed");

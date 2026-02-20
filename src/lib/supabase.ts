@@ -23,6 +23,7 @@ export interface DbEpisode {
     description: string;
     topics: string[] | null;
     image: string | null;
+    image_filename: string | null;
     soundcloud: string | null;
     youtube: string | null;
     headline: string | null;
@@ -50,6 +51,7 @@ export interface DbArticle {
     date: string;
     category: string;
     image: string;
+    image_filename: string | null;
     author: string | null;
     tags: string[] | null;
     published: boolean;
@@ -78,6 +80,7 @@ export function dbEpisodeToEpisode(dbEpisode: DbEpisode) {
         description: dbEpisode.description,
         topics: dbEpisode.topics || undefined,
         image: dbEpisode.image || undefined,
+        imageFilename: dbEpisode.image_filename || undefined,
         soundcloud: dbEpisode.soundcloud || undefined,
         youtube: dbEpisode.youtube || undefined,
         headline: dbEpisode.headline || undefined,
@@ -112,6 +115,7 @@ export function dbArticleToArticle(dbArticle: DbArticle) {
         date: dbArticle.date,
         category: dbArticle.category,
         image: dbArticle.image,
+        imageFilename: dbArticle.image_filename || undefined,
         author: dbArticle.author || undefined,
         tags: dbArticle.tags || undefined,
         published: dbArticle.published,
