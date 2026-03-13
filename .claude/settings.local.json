@@ -47,7 +47,11 @@
       "Bash(npx next build)",
       "Bash(npx supabase:*)",
       "Bash(nslookup:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(supabase db execute:*)",
+      "Bash(where:*)"
     ]
   }
 }

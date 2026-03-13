@@ -364,17 +364,11 @@ export default function NewEpisodePage() {
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Episode Transcript
                             </label>
-                            <textarea
-                                name="transcript"
-                                value={formData.transcript}
-                                onChange={handleChange}
-                                rows={12}
-                                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono text-sm"
+                            <RichTextEditor
+                                content={formData.transcript}
+                                onChange={(content) => setFormData((prev) => ({ ...prev, transcript: content }))}
                                 placeholder="Paste the full episode transcript here..."
                             />
-                            <p className="text-xs text-gray-500 mt-1">
-                                Paste the transcript text from your transcription service. Timestamps like [00:12:34] will be styled automatically on the episode page.
-                            </p>
                         </div>
                     </div>
 

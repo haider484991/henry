@@ -214,15 +214,10 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
                                 <div
                                     className={`relative ${transcriptOpen ? '' : 'max-h-48 overflow-hidden'}`}
                                 >
-                                    <div className="p-8 whitespace-pre-line text-muted-foreground leading-relaxed">
-                                        {episode.transcript.split(/(\[?\d{1,2}:\d{2}(?::\d{2})?\]?)/).map((part, i) =>
-                                            /^\[?\d{1,2}:\d{2}(?::\d{2})?\]?$/.test(part) ? (
-                                                <span key={i} className="text-primary/60 font-mono text-sm">{part}</span>
-                                            ) : (
-                                                <span key={i}>{part}</span>
-                                            )
-                                        )}
-                                    </div>
+                                    <div
+                                        className="p-8 prose prose-lg max-w-none text-muted-foreground leading-relaxed prose-headings:text-foreground prose-a:text-primary"
+                                        dangerouslySetInnerHTML={{ __html: episode.transcript }}
+                                    />
                                     {!transcriptOpen && (
                                         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
                                     )}
