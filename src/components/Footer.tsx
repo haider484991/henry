@@ -7,7 +7,7 @@ export function Footer() {
     return (
         <footer className="bg-[#001C25] text-white py-24">
             <div className="w-full px-8 md:px-16 lg:px-24">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Logo & Description */}
                     <div className="footer-col lg:col-span-1">
                         <div className="flex items-center gap-3 mb-6">
@@ -121,39 +121,6 @@ export function Footer() {
                             <li>
                                 <Link href="/acceptable-use" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
                                     Acceptable Use
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    {/* Podcast */}
-                    <div className="footer-col">
-                        <h4 className="text-xs font-medium uppercase tracking-widest mb-6 text-white/40">
-                            Podcast
-                        </h4>
-                        <ul className="space-y-4 text-sm">
-                            <li>
-                                <Link href="/podcast" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    All Episodes
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/season-4" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    Season 4
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/entrepreneurs-business-and-finance-season-3" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    Season 3
-                                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/henry-harrison-dallas-tx-podcast-season-2" className="text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 group">
-                                    Season 2
                                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </Link>
                             </li>
