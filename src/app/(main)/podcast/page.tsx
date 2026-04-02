@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Headphones, ArrowRight, Play, Loader2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { getSeasons, getEpisodes } from "@/lib/actions";
 
@@ -46,6 +47,7 @@ export default function PodcastPage() {
     const pageRef = useRef<HTMLDivElement>(null);
     const [seasons, setSeasons] = useState<SeasonWithEpisodes[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         async function loadData() {
@@ -180,16 +182,35 @@ export default function PodcastPage() {
             <section className="py-16 md:py-24 bg-background">
                 <div className="w-full px-8 md:px-16 lg:px-24">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Video */}
-                        <div className="aspect-video bg-black rounded overflow-hidden">
-                            <video
-                                className="w-full h-full object-cover"
-                                controls
-                                poster="/images/podcast/podcast-cover.jpg"
-                            >
-                                <source src="/videos/podcast-trailer.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
+                        {/* Video with custom thumbnail */}
+                        <div className="aspect-video bg-black rounded overflow-hidden relative">
+                            {!isPlaying ? (
+                                <button
+                                    onClick={() => setIsPlaying(true)}
+                                    className="w-full h-full relative group cursor-pointer"
+                                >
+                                    <Image
+                                        src="/images/podcast/podcast-cover.png"
+                                        alt="Henry Harrison Podcast"
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                                        <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/90 group-hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+                                            <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-1" />
+                                        </div>
+                                    </div>
+                                </button>
+                            ) : (
+                                <iframe
+                                    className="w-full h-full"
+                                    src="https://www.youtube.com/embed/dsoMMk3f90U?autoplay=1"
+                                    title="Podcast Trailer"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            )}
                         </div>
 
                         {/* Content */}

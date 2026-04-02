@@ -45,7 +45,7 @@ export function EpisodeContent({ episode }: { episode: Episode }) {
         ? episode.image
         : episode.youtube
             ? getYoutubeThumbnail(episode.youtube)
-            : "/images/podcast-cover.jpg";
+            : "/images/podcast/podcast-cover.png";
 
     return (
         <article className="min-h-screen bg-background">

@@ -306,7 +306,7 @@ export function EpisodeJsonLd({
             ? image
             : image
                 ? `${siteConfig.url}${image}`
-                : `${siteConfig.url}/images/podcast-cover.jpg`;
+                : `${siteConfig.url}/images/podcast/podcast-cover.png`;
 
     const schema = {
         "@context": "https://schema.org",

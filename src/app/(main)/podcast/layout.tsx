@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://henryharrison.com/images/podcast-cover.jpg",
+                url: "https://henryharrison.com/images/podcast/podcast-cover.png",
                 width: 1200,
                 height: 630,
                 alt: "Henry Harrison Podcast",
