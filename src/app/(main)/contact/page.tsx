@@ -206,7 +206,7 @@ export default function ContactPage() {
                                             <Linkedin className="w-5 h-5" />
                                         </a>
                                         <a
-                                            href="https://x.com/henrydeimel"
+                                            href="https://x.com/henryharrisontx"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="w-12 h-12 bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center transition-colors"

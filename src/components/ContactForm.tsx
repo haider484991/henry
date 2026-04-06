@@ -229,7 +229,7 @@ export function ContactForm() {
                                         <Linkedin className="w-5 h-5" />
                                     </a>
                                     <a
-                                        href="https://x.com/henrydeimel"
+                                        href="https://x.com/henryharrisontx"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-12 h-12 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
